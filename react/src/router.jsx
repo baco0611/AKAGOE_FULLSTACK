@@ -1,15 +1,23 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { Navigate, createBrowserRouter } from 'react-router-dom'
 import NotFound from './views/NotFound'
 import Shop from './views/ShopSection/Shop/Shop'
-import Home from './views/DefaultSection/Home/Home'
 import About from './views/DefaultSection/About/About'
 import { Product, MainProduct } from './views/DefaultSection/Product'
+import { Home, HomeSection } from './views/DefaultSection/Home'
 
 const router = createBrowserRouter([
         {
             path:'/',
-            element: <Home/>,
+            element: <HomeSection/>,
             children: [
+                {
+                    path:'/',
+                    element: <Navigate to={'/home'}/>
+                },
+                {
+                    path:'/home',
+                    element: <Home/>
+                },
                 {
                     path:'/about',
                     element: <About/>
@@ -26,7 +34,10 @@ const router = createBrowserRouter([
         },
         {
             path:'/shop',
-            element: <Shop/>
+            element: <Shop/>,
+            children: [
+                
+            ]
         },
         {
             path:'*',
