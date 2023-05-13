@@ -1,14 +1,18 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom'
-import NotFound from './views/NotFound'
-import Shop from './views/ShopSection/Shop/Shop'
-import About from './views/DefaultSection/About/About'
-import { Product, MainProduct } from './views/DefaultSection/Product'
-import { Home, HomeSection } from './views/DefaultSection/Home'
+import HomeLayout from './views/HomeLayout'
+import Home from './components/DefaultSection/Home/Home'
+import About from './components/DefaultSection/About/About'
+import ShopLayout from './views/ShopLayout'
+import Shop from './components/ShopSection/Shop/Shop'
+import { Product, MainProduct } from './components/DefaultSection/Product'
+import Category from './components/ShopSection/Category/Category'
+import Cart from './components/ShopSection/Cart/Cart'
+import { Login, NotFound, SignUp } from './components/UserSection'
 
 const router = createBrowserRouter([
         {
             path:'/',
-            element: <HomeSection/>,
+            element: <HomeLayout/> ,
             children: [
                 {
                     path:'/',
@@ -33,11 +37,34 @@ const router = createBrowserRouter([
             ]
         },
         {
-            path:'/shop',
-            element: <Shop/>,
+            path:'/',
+            element: <ShopLayout/>,
             children: [
-                
+                {
+                    path:'/shop',
+                    element: <Shop/>
+                },
+                {
+                    path:'/shop/category',
+                    element: <Navigate to={'/shop/category/all'}/>
+                },
+                {
+                    path:'/shop/category/:slug',
+                    element: <Category/>
+                },
+                {
+                    path:'/shop/cart',
+                    element: <Cart/>
+                }
             ]
+        },
+        {
+            path: '/login',
+            element: <Login/>
+        },
+        {
+            path: '/signup',
+            element: <SignUp/>
         },
         {
             path:'*',
