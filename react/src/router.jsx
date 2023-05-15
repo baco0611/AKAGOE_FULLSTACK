@@ -1,4 +1,4 @@
-import { Navigate, createBrowserRouter } from 'react-router-dom'
+import { Link, Navigate, createBrowserRouter } from 'react-router-dom'
 import HomeLayout from './views/HomeLayout'
 import Home from './components/DefaultSection/Home/Home'
 import About from './components/DefaultSection/About/About'
@@ -8,6 +8,8 @@ import { Product, MainProduct } from './components/DefaultSection/Product'
 import Category from './components/ShopSection/Category/Category'
 import Cart from './components/ShopSection/Cart/Cart'
 import { Login, NotFound, SignUp } from './components/UserSection'
+
+const defaultLanguage = localStorage.getItem("DEFAULT_LANGUAGE")
 
 const router = createBrowserRouter([
         {
@@ -24,7 +26,13 @@ const router = createBrowserRouter([
                 },
                 {
                     path:'/about',
-                    element: <About/>
+                    element: <About/>,
+                    children: [
+                        {
+                            path: '/about/:language',
+                            element: <About/>
+                        }
+                    ]
                 }, 
                 {
                     path:'/product',
@@ -32,7 +40,13 @@ const router = createBrowserRouter([
                 },
                 {
                     path:'/product/:slug',
-                    element: <Product/>
+                    element: <Product/>, 
+                    children: [
+                        {
+                            path:'/product/:slug/:language',
+                            element: <Product/> 
+                        }
+                    ]
                 }
             ]
         },

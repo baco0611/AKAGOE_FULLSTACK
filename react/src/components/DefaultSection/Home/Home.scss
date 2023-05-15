@@ -1,0 +1,24 @@
+#home-section {
+    padding-top: 100px;
+}
+
+.frame {
+    width: 100vw;
+    height: 100vh;
+}
+
+.test {
+    display: grid;
+    grid-auto-flow: column;
+    scroll-behavior: auto;
+    gap: 0;
+    // overflow-y: hidden;
+    // overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.box {
+    overflow: hidden;
+}

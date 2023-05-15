@@ -1,7 +1,7 @@
 @import "../variable.scss";
 
 #default-section {
-    min-height: 500px;
+    // min-height: 500px;
     background-color: $default-color;
 
     & header {
@@ -17,6 +17,7 @@
         position: fixed;
         left: 50%;
         transform: translate(-50%, 0);
+        z-index: 100;
 
         & .direction {
             height: 100%;
@@ -136,91 +137,5 @@
         transition: all .4s ease-in-out;
         transform: translateY(0);
         visibility: visible;
-    }
-
-    & footer {
-        width: 80%;
-        margin: 0 auto;
-        background: $default-color;
-        height: 350px;
-        padding-top: 50px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-
-        & a:hover {
-            opacity: 0.6;
-        }
-    }
-
-    .footer-main {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    & .footer-left, .footer-right {
-        height: 100%;
-    }
-
-    & .footer-left {
-        width: 25%;
-
-        & .header {
-            padding-bottom: 50px;
-            & h1 {
-                font-size: 24px;
-            }   
-            & p {
-                margin-top: 14px;
-                font-family: $font-nunito;
-                color: #1e1e1e98;
-                letter-spacing: 2px;
-                font-weight: 600;
-                font-size: 18px;
-            }
-        }
-    }
-
-    & .footer-right {
-        width: 60%;
-        display: flex;
-        justify-content: right;
-        gap: 75px;
-        letter-spacing: 1.5px;
-
-        & .footer-column {
-            display: flex;
-            flex-direction: column;
-            gap: 24px
-        }
-
-        & h4 {
-            padding-bottom: 10px;
-        }
-
-        & a {
-            padding-bottom: 10px;
-            color: #1e1e1e9f;
-        }
-        & .information {
-            margin-bottom: 20px;
-            text-align: justify;
-            width: 40%;
-
-            & h5 {
-                font-size: 14px;
-                font-weight: 600;
-                padding-bottom: 5px;
-                color: #1e1e1ef3;
-            }
-
-            & p {
-                font-size: 10px;
-                padding-bottom: 5px;
-                color: #1e1e1e9f;
-            }
-        }
     }
 }

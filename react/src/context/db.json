@@ -1,0 +1,18 @@
+{
+    "explore-data": {
+        "data": [
+            {
+                "content": "1 The perspective property is used to give a 3D-positioned element some perspective.",
+                "image": "https://cdn-amz.woka.io/images/I/61MsKTrzi6L.jpg"
+            },
+            {
+                "content": "2 When defining the perspective property for an element, it is the CHILD elements that get the perspective view, NOT the element itself.",
+                "image": "https://rukminim1.flixcart.com/image/850/1000/kz4gh3k0/poster/4/x/a/medium-blackpink-south-korean-girl-group-matte-finish-poster-original-imagb786e7r5a9xb.jpeg?q=90"
+            },
+            {
+                "content": "3 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, in omnis adipisci beatae asperiores, qui, placeat hic aliquam ratione sapiente nostrum. Accusantium rem impedit atque mollitia distinctio ducimus in laboriosam!",
+                "image": "https://pbs.twimg.com/media/Fac6yjKaIAI0Nkp.jpg:large"
+            }
+        ]
+    }
+}
