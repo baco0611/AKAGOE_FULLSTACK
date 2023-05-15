@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const UserContext = createContext()
 
@@ -10,6 +10,19 @@ function StateContext({ children }) {
     })
     const [token, _setToken] = useState(localStorage.getItem('ACCES_TOKEN'))
     // const [token, _setToken] = useState(123)
+
+    const [defaultLanguage, _setDefaultLanguage] = useState(localStorage.getItem('DEFAULT_LANGUAGE'))
+
+    const setDefaultLanguage = (language) => {
+        localStorage.setItem('DEFAULT_LANGUAGE', language)
+        _setDefaultLanguage(language)
+    }
+
+    useEffect(() => {
+        if(!defaultLanguage) {
+            setDefaultLanguage('eng')
+        }
+    }, [])
 
     const setToken = (token) => {
         _setToken(token)
@@ -24,8 +37,10 @@ function StateContext({ children }) {
         <UserContext.Provider value={{
                 user,
                 token,
+                defaultLanguage,
                 setUser,
-                setToken
+                setToken,
+                setDefaultLanguage
             }
         }>
             {children}
