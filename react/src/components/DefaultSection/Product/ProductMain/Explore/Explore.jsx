@@ -29,11 +29,11 @@ function Explore({ slug }) {
                         {
                             exploreData.map((data, index) => {
                                 return (
-                                    index!==mainIndex
-                                    ?
-                                        <p className='none' id={`for-img-${index}`} key={index}>{data.content}</p>
-                                    :
-                                        <p id={`for-img-${index}`} key={index}>{data.content}</p>
+                                    <p 
+                                        className={index === mainIndex ? '' : 'none'} 
+                                        id={`for-img-${index}`} 
+                                        key={index}>{data.content}
+                                    </p>
                                 )
                             })
                         }
@@ -43,11 +43,14 @@ function Explore({ slug }) {
                     {
                         exploreData.map((data, index) => {
                             return (
-                                index!==mainIndex
-                                ?
-                                    <input key={index} type="radio" name="testimonial" id={`img-${index}`}/>
-                                :    
-                                    <input key={index} type="radio" name="testimonial" id={`img-${index}`} checked={true}/>
+                                <input 
+                                    key={index} 
+                                    type="radio" 
+                                    name="testimonial" 
+                                    id={`img-${index}`} 
+                                    checked={index === mainIndex} 
+                                    onChange={() => setMainIndex(index)}
+                                />
                             )
                         })
                     }
@@ -60,7 +63,7 @@ function Explore({ slug }) {
                                         key={index} 
                                         htmlFor={`img-${index}`} 
                                         className='item'
-                                        onClick={() => setMainIndex(index)}
+                                        // onClick={() => setMainIndex(index)}
                                     >
                                         <img src={data.image}/>
                                     </label>
@@ -76,7 +79,7 @@ function Explore({ slug }) {
                                     <label 
                                         key={index} 
                                         htmlFor={`img-${index}`}
-                                        onClick={() => setMainIndex(index)}    
+                                        // onClick={() => setMainIndex(index)}    
                                     />
                                 )
                             })
@@ -87,11 +90,11 @@ function Explore({ slug }) {
                         {
                             exploreData.map((data, index) => {
                                 return (
-                                    index!==mainIndex 
-                                    ?
-                                        <p className='none' id={`for-img-${index}`} key={index}>{data.content}</p>
-                                    :
-                                        <p id={`for-img-${index}`} key={index}>{data.content}</p>
+                                    <p 
+                                        className={index === mainIndex ? '' : 'none'} 
+                                        id={`for-img-${index}`} 
+                                        key={index}>{data.content}
+                                    </p>
                                 )
                             })
                         }
