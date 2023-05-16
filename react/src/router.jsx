@@ -1,18 +1,38 @@
-import { createBrowserRouter } from 'react-router-dom'
-import NotFound from './views/NotFound'
-import Shop from './views/ShopSection/Shop/Shop'
-import Home from './views/DefaultSection/Home/Home'
-import About from './views/DefaultSection/About/About'
-import { Product, MainProduct } from './views/DefaultSection/Product'
+import { Link, Navigate, createBrowserRouter } from 'react-router-dom'
+import HomeLayout from './views/HomeLayout'
+import Home from './components/DefaultSection/Home/Home'
+import About from './components/DefaultSection/About/About'
+import ShopLayout from './views/ShopLayout'
+import Shop from './components/ShopSection/Shop/Shop'
+import { Product, MainProduct } from './components/DefaultSection/Product'
+import Category from './components/ShopSection/Category/Category'
+import Cart from './components/ShopSection/Cart/Cart'
+import { Login, NotFound, SignUp } from './components/UserSection'
+
+const defaultLanguage = localStorage.getItem("DEFAULT_LANGUAGE")
 
 const router = createBrowserRouter([
         {
             path:'/',
-            element: <Home/>,
+            element: <HomeLayout/> ,
             children: [
                 {
+                    path:'/',
+                    element: <Navigate to={'/home'}/>
+                },
+                {
+                    path:'/home',
+                    element: <Home/>
+                },
+                {
                     path:'/about',
-                    element: <About/>
+                    element: <About/>,
+                    children: [
+                        {
+                            path: '/about/:language',
+                            element: <About/>
+                        }
+                    ]
                 }, 
                 {
                     path:'/product',
@@ -20,13 +40,45 @@ const router = createBrowserRouter([
                 },
                 {
                     path:'/product/:slug',
-                    element: <Product/>
+                    element: <Product/>, 
+                    children: [
+                        {
+                            path:'/product/:slug/:language',
+                            element: <Product/> 
+                        }
+                    ]
                 }
             ]
         },
         {
-            path:'/shop',
-            element: <Shop/>
+            path:'/',
+            element: <ShopLayout/>,
+            children: [
+                {
+                    path:'/shop',
+                    element: <Shop/>
+                },
+                {
+                    path:'/shop/category',
+                    element: <Navigate to={'/shop/category/all'}/>
+                },
+                {
+                    path:'/shop/category/:slug',
+                    element: <Category/>
+                },
+                {
+                    path:'/shop/cart',
+                    element: <Cart/>
+                }
+            ]
+        },
+        {
+            path: '/login',
+            element: <Login/>
+        },
+        {
+            path: '/signup',
+            element: <SignUp/>
         },
         {
             path:'*',
