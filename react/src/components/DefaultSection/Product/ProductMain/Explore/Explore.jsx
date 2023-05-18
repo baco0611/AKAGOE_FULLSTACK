@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios';
 import './Explore.scss'
 
 function Explore({ slug }) {
@@ -6,16 +7,26 @@ function Explore({ slug }) {
     const [exploreData, setExploreData] = useState([])
     const [mainIndex, setMainIndex] = useState(0)
 
-    // console.log(exploreData)
+    console.log(exploreData)
 
     useEffect(() => {
         const fecthAPI = async (api) => {
-            await fetch(api)   
-            .then(response => response.json())
-            .then(data => setExploreData(data.data))    
+            // await fetch(api)   
+            // .then(response => response.json())
+            // .then(data => setExploreData(data.data))   
+            await axios.get(api)
+                .then(response => {
+                    const apiData = response.data
+                    setExploreData(apiData.data)
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         } 
         
-        const exploreApi = 'http://localhost:3001/explore-data'
+        console.log(slug)
+        const exploreApi = `http://localhost:3001/explore-${slug}`
         fecthAPI(exploreApi)
     }, [])
 
