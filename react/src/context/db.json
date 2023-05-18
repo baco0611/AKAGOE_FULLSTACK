@@ -1,4 +1,13 @@
 {
+    "introduce-akagoe": {
+        "data": [
+            {
+                "name": "AKAGOE",
+                "content": "赤声 là một trò chơi hướng tới giáo dục dành cho trẻ em từ 6 tuổi trở lên./r/nTên kết hợp giữa 赤ちゃん (trẻ em) và 声 (âm thanh) thể hiện tiếng nói của trẻ em./r/nHình thức: Phiêu lưu và giải đố./r/nTrò chơi sẽ là một hành trình giúp các em có thể học tập các kỹ năng mềm như phân loại rác, tự đi siêu thị, sắp xếp đồ đạc, …/r/nCác thử thách sẽ được lặp lại theo ngày ở các địa điểm khác nhau như cuộc sống thường ngày của các em nhỏ để các em học tập được các kỹ năng đó.",
+                "mainColor": "#6BABAB"
+            }
+        ]
+    },
     "explore-akagoe": {
         "data": [
             {
@@ -11,6 +20,22 @@
             },
             {
                 "content": "3 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, in omnis adipisci beatae asperiores, qui, placeat hic aliquam ratione sapiente nostrum. Accusantium rem impedit atque mollitia distinctio ducimus in laboriosam!",
+                "image": "https://pbs.twimg.com/media/Fac6yjKaIAI0Nkp.jpg:large"
+            }
+        ]
+    },
+    "explore-soulhalo": {
+        "data": [
+            {
+                "content": "SOULHALO The perspective property is used to give a 3D-positioned element some perspective.",
+                "image": "https://cdn-amz.woka.io/images/I/61MsKTrzi6L.jpg"
+            },
+            {
+                "content": "Soulhalo2 When defining the perspective property for an element, it is the CHILD elements that get the perspective view, NOT the element itself.",
+                "image": "https://rukminim1.flixcart.com/image/850/1000/kz4gh3k0/poster/4/x/a/medium-blackpink-south-korean-girl-group-matte-finish-poster-original-imagb786e7r5a9xb.jpeg?q=90"
+            },
+            {
+                "content": "SoulHALO 3 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, in omnis adipisci beatae asperiores, qui, placeat hic aliquam ratione sapiente nostrum. Accusantium rem impedit atque mollitia distinctio ducimus in laboriosam!",
                 "image": "https://pbs.twimg.com/media/Fac6yjKaIAI0Nkp.jpg:large"
             }
         ]

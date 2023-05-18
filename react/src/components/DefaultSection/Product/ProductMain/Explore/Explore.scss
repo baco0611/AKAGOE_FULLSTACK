@@ -5,7 +5,8 @@
 }
 
 .explore-main {
-    transform: translateY(-100px);
+    // transform: translateY(-100px);
+    transform: translateY(-10vh);
     display: flex;
     gap: 75px;
     
@@ -16,7 +17,7 @@
 }
 
 .explore-content {
-    padding-top: 100px;
+    padding-top: 10vh;
     // width: max(580px, 50% - 75px);
     width: calc(50% - 75px);
 
