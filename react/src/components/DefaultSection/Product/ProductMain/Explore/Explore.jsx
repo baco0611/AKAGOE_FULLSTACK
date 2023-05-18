@@ -7,25 +7,21 @@ function Explore({ slug }) {
     const [exploreData, setExploreData] = useState([])
     const [mainIndex, setMainIndex] = useState(0)
 
-    console.log(exploreData)
+    // console.log(exploreData)
 
     useEffect(() => {
-        const fecthAPI = async (api) => {
-            // await fetch(api)   
-            // .then(response => response.json())
-            // .then(data => setExploreData(data.data))   
+        const fecthAPI = async (api) => {  
             await axios.get(api)
                 .then(response => {
                     const apiData = response.data
                     setExploreData(apiData.data)
-                    console.log(response)
                 })
                 .catch(error => {
                     console.log(error)
                 })
         } 
         
-        console.log(slug)
+        // console.log(slug)
         const exploreApi = `http://localhost:3001/explore-${slug}`
         fecthAPI(exploreApi)
     }, [])
