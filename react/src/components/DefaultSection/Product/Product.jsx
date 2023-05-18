@@ -16,7 +16,10 @@ function Product() {
         if(!language) 
             navigate(`/product/${slug}/${defaultLanguage}`)
         else {
-            setDefaultLanguage(language)
+            if(['vie', 'eng', 'jpn'].includes(language))
+                setDefaultLanguage(language)
+            else
+                navigate(`/product/${slug}/${defaultLanguage}`)
         }
     }, [])
 
