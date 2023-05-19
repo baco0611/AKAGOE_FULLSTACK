@@ -21,7 +21,7 @@ function Product() {
             else
                 navigate(`/product/${slug}/${defaultLanguage}`)
         }
-    }, [])
+    })
 
     return (
         <div id="product-section">

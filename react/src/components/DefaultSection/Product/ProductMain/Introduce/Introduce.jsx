@@ -29,7 +29,7 @@ function Introduce({ slug }) {
         //     content: '赤声 là một trò chơi hướng tới giáo dục dành cho trẻ em từ 6 tuổi trở lên./r/nTên kết hợp giữa 赤ちゃん (trẻ em) và 声 (âm thanh) thể hiện tiếng nói của trẻ em./r/nHình thức: Phiêu lưu và giải đố./r/nTrò chơi sẽ là một hành trình giúp các em có thể học tập các kỹ năng mềm như phân loại rác, tự đi siêu thị, sắp xếp đồ đạc, …/r/nCác thử thách sẽ được lặp lại theo ngày ở các địa điểm khác nhau như cuộc sống thường ngày của các em nhỏ để các em học tập được các kỹ năng đó.',
         //     mainColor: '#6BABAB'
         // })
-    }, [])
+    }, [slug])
 
     if(isLoading) 
         return (

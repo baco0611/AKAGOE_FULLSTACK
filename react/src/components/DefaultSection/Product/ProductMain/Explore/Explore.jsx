@@ -24,7 +24,7 @@ function Explore({ slug }) {
         // console.log(slug)
         const exploreApi = `http://localhost:3001/explore-${slug}`
         fecthAPI(exploreApi)
-    }, [])
+    }, [slug])
 
     return (
         <div id='explore-section'>

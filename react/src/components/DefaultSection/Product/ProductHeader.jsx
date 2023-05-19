@@ -14,7 +14,7 @@ function ProductHeader({ slug }) {
             setContent('Lorem ipsum dolor sit amet consectetur. Justo purus sed arcu cursus bibendum dui et proin orci. Dui adipiscing accumsan sed commodo placerat pretium sodales. Sit est eros at vitae lacus turpis amet. Viverra cursus cursus tempus in mollis vitae. Sodales fusce et etiam feugiat nunc ac proin quam consequat. Eu id pellentesque massa faucibus vitae fermentum vel elit leo. Pharetra vitae ullamcorper amet vitae. Ullamcorper non mattis arcu sagittis tellus non fermentum et quis. In condimentum orci amet eget sit sit elit sed.')
         }
     }
-    , [])
+    , [slug])
 
     return (
         <div className="product-header">
