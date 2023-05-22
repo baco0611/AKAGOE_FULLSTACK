@@ -1,13 +1,16 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import skrollr from 'skrollr';
 
 import './Home.scss'
+import { HomeSectionContext } from '../../../context/HomeProvider';
 
 function Home() {
 
     const testRef = useRef()
     const [style, setStyle] = useState({})
     const [windowY, setWindowY] = useState(0)
+    const { setThemeColor } = useContext(HomeSectionContext)
+    setThemeColor('default')
 
     window.onscroll = () => {
         console.log(testRef.current.getBoundingClientRect())
