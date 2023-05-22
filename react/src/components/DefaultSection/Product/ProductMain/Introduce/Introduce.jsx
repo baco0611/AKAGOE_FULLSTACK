@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './Introduce.scss'
 import * as Img from './img'
 import axios from 'axios'
+import { HomeSectionContext } from '../../../../../context/HomeProvider'
 
 function Introduce({ slug }) {
 
     const [introduceData, setIntroduceData] = useState({name: '',content: ' ',mainColor: ''})
     const [isLoading, setIsLoading] = useState(true)
+    const { setThemeColor } = useContext(HomeSectionContext)
 
     useEffect(() => {
         //fetch API
@@ -16,6 +18,7 @@ function Introduce({ slug }) {
                         const apiData = response.data
                         setIntroduceData(apiData.data[0])
                         setIsLoading(false)
+                        setThemeColor('#00506c')
                     })
                     .catch(error => {
                         console.log(error)
