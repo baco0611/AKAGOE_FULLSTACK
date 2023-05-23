@@ -1,0 +1,67 @@
+@import '../../../../../variable.scss';
+
+#character-section {
+    min-height: 85vh;
+    width: 100%;
+    padding-top: 12vh;
+    padding-bottom: 50px;
+    
+    & .character {
+        display: flex;
+        gap: 25px;
+
+        &-content, &-img {
+            width: 50%;
+            min-height: 550px;
+        }
+
+        &-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            & .heading {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding-bottom: 50px;
+            }
+
+            & h3 {
+                font-size: 28px;
+                line-height: 40px;
+                letter-spacing: 3px;
+                padding: 10px 0;
+            }
+
+            & h1 {
+                font-size: 44px;
+                font-weight: 600;
+                line-height: 40px;
+                letter-spacing: 3px;
+            }
+
+            & p {
+                font-family: $font-VN;
+                font-size: 18px;
+                line-height: 38px;
+                text-align: justify;
+                letter-spacing: 1px;
+                padding: 0 15px;
+            }
+        }
+
+        &-img {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+
+            & img, model-viewer {
+                height: 70%;
+            }
+        }
+    }
+}
