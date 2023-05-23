@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 import './Explore.scss'
-import Loader from '../../../../../views/Loader';
+import Loader from '../../../../../views/Loader/Loader';
 
 function Explore({ slug }) {
 

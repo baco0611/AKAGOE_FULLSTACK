@@ -2,8 +2,8 @@ import { Outlet } from "react-router-dom"
 import './HomeLayout.scss'
 
 import HomeHeader from "./HomeHeader"
-import Footer from "./Footer"
-import HomeContext from "../context/HomeProvider"
+import Footer from "../Footer/Footer"
+import HomeContext from "../../context/HomeProvider"
 
 function HomeLayout() {
 

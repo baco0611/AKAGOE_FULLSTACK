@@ -45,5 +45,37 @@
             "image": "https://64.media.tumblr.com/bbc1df2eda13c8b77a18b8b993497ed5/620d363a73a21846-9c/s500x750/d18cf94cd833cc1e76596f05f2632c1e69eebe47.png",
             "type": "2D"
         }
+    },
+    "review-akagoe": {
+        "data": [
+            {
+                "name": "Nguyên Bảo",
+                "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                "star": 4,
+                "position": "Student",
+                "image": "https://drive.google.com/uc?export=view&id=1wgpjCIilRJ2udVnIx_0KlRAT-QBOGrp0"
+            },
+            {
+                "name": "Jennie Kim",
+                "content": "I love you and me, dancing in the moonlight. Nobody can see. It's just you and me tonight...",
+                "star": 5,
+                "position": "Singer",
+                "image": "https://drive.google.com/uc?export=view&id=1YWh42uP8JhjY4l4ARDVJYreRoyleq4oY"
+            },
+            {
+                "name": "Trấn Thành",
+                "content": "Fantastic, wonderful, significant, magnificent, outstanding,… Thế giới mấy ai làm được như thế!!!",
+                "star": 2,
+                "position": "MC, Actor",
+                "image": "https://drive.google.com/uc?export=view&id=1VrSlsEa2sOgEKQOXuMS5OlxI26sW15oZ"
+            },
+            {
+                "name": "Lệ Nam",
+                "content": "Nhưng điều quan trọng là chúng ta tìm thấy sức mạnh nội tại chính mình và vươn cao. Tôi nghĩ rằng ai trong chúng ta cũng có những cuộc chiến riêng. Nhưng hãy tin vào giá trị của bản thân, đội vương miện chính mình.",
+                "star": 5,
+                "position": "Model",
+                "image": "https://drive.google.com/uc?export=view&id=1odnwz-nL74-sASjLwkKbM6dWqTibSnt6"
+            }
+        ]
     }
 }

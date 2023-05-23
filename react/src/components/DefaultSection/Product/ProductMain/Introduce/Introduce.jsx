@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import './Introduce.scss'
 import axios from 'axios'
 import { HomeSectionContext } from '../../../../../context/HomeProvider'
-import Loader from '../../../../../views/Loader'
+import Loader from '../../../../../views/Loader/Loader'
 
 function Introduce({ slug }) {
 

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 import { useContext, useRef, useState } from "react"
-import { UserContext } from "../context/ContextProvider"
+import { UserContext } from "../../context/ContextProvider"
 import clsx from 'clsx'
 import "./HomeLayout.scss"
 
-import { HomeSectionContext } from "../context/HomeProvider"
+import { HomeSectionContext } from "../../context/HomeProvider"
 
 function HomeLayout() {
 
