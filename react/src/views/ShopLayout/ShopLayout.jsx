@@ -1,16 +1,14 @@
 import { Outlet } from "react-router-dom"
-import './HomeLayout.scss'
-import Footer from "./Footer"
-import HomeHeader from "./HomeHeader"
+import Footer from "../Footer/Footer"
 
 function ShopLayout() {
     return (
-        <div id="default-section">
+        <div id="shop-section">
             {/* <HomeHeader/> */}
 
             <Outlet/>
 
-            <Footer 
+            <Footer
                 theme = 'shop'
             />
         </div>

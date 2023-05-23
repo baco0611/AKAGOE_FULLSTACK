@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Character.scss'
-import Loader from '../../../../../views/Loader'
+import Loader from '../../../../../views/Loader/Loader'
 import axios from 'axios'
 
 function Character({ slug }) {
