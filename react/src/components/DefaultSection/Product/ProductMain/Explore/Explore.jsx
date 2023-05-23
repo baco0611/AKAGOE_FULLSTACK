@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 import './Explore.scss'
+import Loader from '../../../../../views/Loader';
 
 function Explore({ slug }) {
 
     const [exploreData, setExploreData] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const [mainIndex, setMainIndex] = useState(0)
 
     // console.log(exploreData)
@@ -15,6 +17,7 @@ function Explore({ slug }) {
                 .then(response => {
                     const apiData = response.data
                     setExploreData(apiData.data)
+                    setIsLoading(false)
                 })
                 .catch(error => {
                     console.log(error)
@@ -25,6 +28,9 @@ function Explore({ slug }) {
         const exploreApi = `http://localhost:3001/explore-${slug}`
         fecthAPI(exploreApi)
     }, [slug])
+
+    if(isLoading) 
+        return <Loader/>
 
     return (
         <div id='explore-section'>

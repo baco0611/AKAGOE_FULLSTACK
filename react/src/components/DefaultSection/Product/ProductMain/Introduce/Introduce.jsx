@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
 import './Introduce.scss'
-import * as Img from './img'
 import axios from 'axios'
 import { HomeSectionContext } from '../../../../../context/HomeProvider'
+import Loader from '../../../../../views/Loader'
 
 function Introduce({ slug }) {
 
@@ -16,7 +16,7 @@ function Introduce({ slug }) {
                 await axios.get(api)
                     .then(response => {
                         const apiData = response.data
-                        setIntroduceData(apiData.data[0])
+                        setIntroduceData(apiData.data)
                         setIsLoading(false)
                         setThemeColor('#00506c')
                     })
@@ -26,6 +26,7 @@ function Introduce({ slug }) {
             }
 
             const introduceApi = `http://localhost:3001/introduce-${slug}`
+            // const introduceApi = `http://localhost:3001/introdu`
             fecthAPI(introduceApi)
         // setIntroduceData({
         //     name: 'Akagoe',
@@ -35,14 +36,13 @@ function Introduce({ slug }) {
     }, [slug])
 
     if(isLoading) 
-        return (
-            <div>LOADING</div>
-        )
+        return <Loader/>
 
     return (
         <div id="introduce-section">
             <div className='introduce-left'>
-                <img src={Img[`${slug}Logo`]}/>
+                {/* <img src={Img[`${slug}Logo`]}/> */}
+                <img src={introduceData.logo}/>
             </div>
             <div className='introduce-right'>
                 <div>
