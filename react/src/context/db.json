@@ -98,8 +98,15 @@
             {
                 "name": "Play Together",
                 "image": "https://shopgarena.net/wp-content/uploads/2022/07/Hinh-game-Play-Together-VNG-moi-dep-nhat.jpg",
-                "slug": "playtogethẻ"
+                "slug": "playtogether"
             }
         ]
+    },
+    "download-akagoe": {
+        "data": {
+            "laptopURL": "",
+            "appStoreURL": "",
+            "ggPlayURL": ""
+        }
     }
 }

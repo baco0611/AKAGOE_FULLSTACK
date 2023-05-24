@@ -9,8 +9,6 @@ function Explore({ slug }) {
     const [isLoading, setIsLoading] = useState(true)
     const [mainIndex, setMainIndex] = useState(0)
 
-    // console.log(exploreData)
-
     useEffect(() => {
         const fecthAPI = async (api) => {  
             await axios.get(api)
@@ -24,7 +22,7 @@ function Explore({ slug }) {
                 })
         } 
         
-        // console.log(slug)
+        setIsLoading(true)
         const exploreApi = `http://localhost:3001/explore-${slug}`
         fecthAPI(exploreApi)
     }, [slug])
