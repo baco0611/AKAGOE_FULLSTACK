@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import Loader from "../../../../../views/Loader/Loader"
 import './Review.scss'
+import ReviewBlock from "./ReviewBlock"
 
 function Review({ slug }) {
 
@@ -26,7 +27,6 @@ function Review({ slug }) {
         fecthAPI(reviewApi)
     }, [slug])
 
-    console.log(reviewData)
 
     if(isLoading)
         return <Loader/>
@@ -39,24 +39,7 @@ function Review({ slug }) {
                     {
                         reviewData.map((data, index) => {
                             return(
-                                <div className="review-block" key={index}>
-                                    <p>{data.content}</p>
-                                    <div className="review-footer">
-                                        <div className="review-img">
-                                            <img src={data.image}/>
-                                        </div>
-                                        <div className="review-title">
-                                            <div className="review-left">
-                                                <h1>{data.name}</h1>
-                                                <h3>{data.position}</h3>
-                                            </div>
-                                            <div className="review-right">
-                                                <i className="ti-star"></i>
-                                                <h1>{data.star}</h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <ReviewBlock data={data} key={index}/>
                             )
                         })
                     }

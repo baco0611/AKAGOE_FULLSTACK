@@ -77,5 +77,29 @@
                 "image": "https://drive.google.com/uc?export=view&id=1odnwz-nL74-sASjLwkKbM6dWqTibSnt6"
             }
         ]
+    },
+    "other-akagoe": {
+        "data": [
+            {
+                "name": "Soul Halo",
+                "image": "https://cdn.popsww.com/blog/sites/2/2022/02/demon-slayer-nezuko.jpg",
+                "slug": "soulhalo"
+            },
+            {
+                "name": "Vọt",
+                "image": "https://media.britishmuseum.org/media/Repository/Documents/2014_10/13_9/c9814f06_ec58_46e6_9829_a3c300a04c50/mid_00792358_001.jpg",
+                "slug": "vot"
+            },
+            {
+                "name": "Knight",
+                "image": "https://t3.ftcdn.net/jpg/05/73/92/02/360_F_573920251_veCkGPsuqXwZ8pXOl1WulBjho09F3g7u.jpg",
+                "slug": "knight"
+            },
+            {
+                "name": "Play Together",
+                "image": "https://shopgarena.net/wp-content/uploads/2022/07/Hinh-game-Play-Together-VNG-moi-dep-nhat.jpg",
+                "slug": "playtogethẻ"
+            }
+        ]
     }
 }
