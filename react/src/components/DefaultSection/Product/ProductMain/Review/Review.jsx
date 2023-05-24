@@ -22,7 +22,7 @@ function Review({ slug }) {
                 })
         } 
         
-        // console.log(slug)
+        setIsLoading(true)
         const reviewApi = `http://localhost:3001/review-${slug}`
         fecthAPI(reviewApi)
     }, [slug])

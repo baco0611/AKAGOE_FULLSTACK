@@ -4,6 +4,7 @@ import Explore from './Explore/Explore'
 import Introduce from './Introduce/Introduce'
 import Review from './Review/Review'
 import Other from './Other/Other'
+import Download from './Download/Download'
 
 function ProductMain({ slug }) {
     return (
@@ -13,6 +14,7 @@ function ProductMain({ slug }) {
             <Character slug={slug}/>
             <Review slug={slug}/>
             <Other slug={slug}/>
+            <Download slug={slug}/>
         </div>
     )
 }

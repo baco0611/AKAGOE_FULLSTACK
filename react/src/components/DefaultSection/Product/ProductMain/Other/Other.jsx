@@ -22,12 +22,10 @@ function Other({ slug }) {
                 })
         } 
         
-        // console.log(slug)
+        setIsLoading(true)
         const reviewApi = `http://localhost:3001/other-${slug}`
         fecthAPI(reviewApi)
     }, [slug])
-
-    // console.log(otherData)
 
     if(isLoading)
         return <Loader/>
