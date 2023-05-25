@@ -23,7 +23,7 @@ function ProductHeader({ slug, about }) {
             await axios.get(api)
                 .then(response => {
                     const apiData = response.data
-                    setContent(apiData.data)
+                    setContent(apiData.data.content)
                     setIsLoading(false)
                 })
                 .catch(error => {
