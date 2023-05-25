@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react'
 import axios from 'axios';
 import './Explore.scss'
 import Loader from '../../../../../views/Loader/Loader';
+import { useNavigate } from 'react-router-dom';
 
-function Explore({ slug }) {
+function Explore({ slug, language }) {
 
     const [exploreData, setExploreData] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [mainIndex, setMainIndex] = useState(0)
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fecthAPI = async (api) => {  
@@ -19,6 +21,7 @@ function Explore({ slug }) {
                 })
                 .catch(error => {
                     console.log(error)
+                    navigate('/fetcherror')
                 })
         } 
         

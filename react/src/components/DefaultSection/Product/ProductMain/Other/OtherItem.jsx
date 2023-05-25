@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 function otherItem({ data }) {
     return (
         <div className="other-item">
-            <img src={data.image}/>
+            <Link to={`/product/${data.slug}`}>
+                <img src={data.image}/>
+            </Link>
 
             <div className="other-content">
-                <Link>
+                <Link to={`/product/${data.slug}`}>
                     <h1>{data.name}</h1>
                 </Link>
                 <Link to={`/product/${data.slug}`}>

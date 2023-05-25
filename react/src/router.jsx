@@ -29,7 +29,7 @@ const router = createBrowserRouter([
                     element: <About/>,
                     children: [
                         {
-                            path: '/about/:language',
+                            path: '/about',
                             element: <About/>
                         }
                     ]
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
                     element: <Product/>, 
                     children: [
                         {
-                            path:'/product/:slug/:language',
+                            path:'/product/:slug',
                             element: <Product/> 
                         }
                     ]
@@ -79,6 +79,10 @@ const router = createBrowserRouter([
         {
             path: '/signup',
             element: <SignUp/>
+        },
+        {
+            path: '/fetchError',
+            element: <NotFound/>
         },
         {
             path:'*',

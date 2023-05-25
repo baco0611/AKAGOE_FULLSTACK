@@ -1,13 +1,46 @@
-import { Link, Outlet, useParams } from "react-router-dom"
+import './MainProduct.scss'
+import { useNavigate}  from "react-router-dom"
 import ProductHeader from "./ProductHeader"
+import { useContext, useEffect, useState } from "react"
+import Loader from "../../../views/Loader/Loader"
+import axios from "axios"
+import { HomeSectionContext } from '../../../context/HomeProvider'
 
 function MainProduct() {
+
+    const [isLoading, setIsLoading] = useState(true)
+    const [gameList, setGameList] = useState([])
+    const navigate = useNavigate()
+    const { setThemeColor } = useContext(HomeSectionContext)
+    
+    useEffect(() => {
+        const fecthAPI = async (api) => {  
+            await axios.get(api)
+            .then(response => {
+                const apiData = response.data
+                    setGameList(apiData.data)
+                    setIsLoading(false)
+                    setThemeColor('#00506c')
+                })
+                .catch(error => {
+                    console.log(error)
+                    navigate('/fetcherror')
+                })
+        } 
+
+        const api = 'http://localhost:3001/product'
+        fecthAPI(api)
+    }, [])
+
+    if(isLoading)
+        return <Loader/>
 
     return (
         <div>
             <ProductHeader/>
-            MainProduct
-            <Link to={'/product/akagoe'}>AKAGOE</Link>
+            <div id="product-main">
+
+            </div>
         </div>
     )
 }

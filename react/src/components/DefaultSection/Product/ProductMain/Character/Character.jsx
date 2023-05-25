@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react'
 import './Character.scss'
 import Loader from '../../../../../views/Loader/Loader'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
-function Character({ slug }) {
+function Character({ slug, language }) {
 
     const [characterData, setCharacterData] = useState()
     const [isLoading, setIsLoading] = useState(true)
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fecthAPI = async (api) => {  
@@ -18,6 +20,7 @@ function Character({ slug }) {
                 })
                 .catch(error => {
                     console.log(error)
+                    navigate('/fetcherror')
                 })
         } 
         
