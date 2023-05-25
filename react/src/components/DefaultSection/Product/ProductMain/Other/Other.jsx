@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react'
+// import { navigate } from 'react-router-dom'
 import Loader from '../../../../../views/Loader/Loader'
 import './Other.scss'
 import axios from 'axios'
 import OtherItem from './OtherItem'
+import { useNavigate } from 'react-router-dom'
 
-function Other({ slug }) {
+function Other({ slug, language }) {
 
     const [otherData, setOtherData] = useState()
     const [isLoading, setIsLoading] = useState(true)
+    var navigate = useNavigate()
 
     useEffect(() => {
         const fecthAPI = async (api) => {  
@@ -19,6 +22,7 @@ function Other({ slug }) {
                 })
                 .catch(error => {
                     console.log(error)
+                    navigate('/fetcherror')
                 })
         } 
         

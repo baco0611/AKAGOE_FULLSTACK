@@ -3,12 +3,13 @@ import './Introduce.scss'
 import axios from 'axios'
 import { HomeSectionContext } from '../../../../../context/HomeProvider'
 import Loader from '../../../../../views/Loader/Loader'
+import { useNavigate } from 'react-router-dom'
 
-function Introduce({ slug }) {
+function Introduce({ slug, language}) {
 
     const [introduceData, setIntroduceData] = useState({name: '',content: ' ',mainColor: ''})
     const [isLoading, setIsLoading] = useState(true)
-    const { setThemeColor } = useContext(HomeSectionContext)
+    const navigate = useNavigate()
 
     useEffect(() => {
         //fetch API
@@ -18,10 +19,10 @@ function Introduce({ slug }) {
                         const apiData = response.data
                         setIntroduceData(apiData.data)
                         setIsLoading(false)
-                        setThemeColor('#00506c')
                     })
                     .catch(error => {
                         console.log(error)
+                        navigate('/fetcherror')
                     })
             }
 

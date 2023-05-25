@@ -3,11 +3,13 @@ import { useEffect, useState } from "react"
 import Loader from "../../../../../views/Loader/Loader"
 import './Review.scss'
 import ReviewBlock from "./ReviewBlock"
+import { useNavigate } from "react-router-dom"
 
-function Review({ slug }) {
+function Review({ slug, language }) {
 
     const [reviewData, setReviewData] = useState()
     const [isLoading, setIsLoading] = useState(true)
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fecthAPI = async (api) => {  
@@ -19,6 +21,7 @@ function Review({ slug }) {
                 })
                 .catch(error => {
                     console.log(error)
+                    navigate('/fetcherror')
                 })
         } 
         

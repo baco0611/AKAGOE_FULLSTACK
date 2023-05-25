@@ -1,8 +1,10 @@
+import ProductHeader from "../Product/ProductHeader"
+
 function About() {
     return (
-        <>
-            About
-        </>
+        <div>
+            <ProductHeader about={true}/>
+        </div>
     )
 }
 

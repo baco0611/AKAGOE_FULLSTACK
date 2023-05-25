@@ -3,11 +3,13 @@ import './Download.scss'
 import * as Image from './img'
 import axios from 'axios'
 import Loader from '../../../../../views/Loader/Loader'
+import { useNavigate } from 'react-router-dom'
 
-function Download({ slug }) {
+function Download({ slug, language }) {
 
     const [downloadData, setDownloadData] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const navigate = useNavigate()
 
     useEffect(() => {
         //fetch API
@@ -20,6 +22,7 @@ function Download({ slug }) {
                 })
                 .catch(error => {
                     console.log(error)
+                    navigate('/fetcherror')
                 })
         } 
         
