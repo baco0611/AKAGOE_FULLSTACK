@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react"
 import Loader from "../../../views/Loader/Loader"
 import axios from "axios"
 import { HomeSectionContext } from '../../../context/HomeProvider'
+import ProductItem from './MainProductElement/ProductItem'
 
 function MainProduct() {
 
@@ -39,7 +40,11 @@ function MainProduct() {
         <div>
             <ProductHeader/>
             <div id="product-main">
-
+                <div className='wraper'>
+                    {
+                        gameList.map((data, index) => <ProductItem key={index} data={data} index={index}/>)
+                    }
+                </div>
             </div>
         </div>
     )
