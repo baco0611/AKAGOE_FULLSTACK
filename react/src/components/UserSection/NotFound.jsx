@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./NotFound.scss";
 
 function NotFound() {
+
+    const { slug } = useParams()
+
     return (
         <div>
             <main>
@@ -496,9 +499,17 @@ function NotFound() {
                     </g>
                 </svg>
                 <p id="errorText">O-o-oh! Something broke.</p>
-                <Link id="errorLink" to={'/'} >
-                    Go Back
-                </Link>
+                {
+                    slug === 'broken'
+                    &&
+                        <div id="errorLink">
+                            THE WEB IS BROKEN<br/>SEE YOU LATER
+                        </div>
+                    ||
+                        <Link id="errorLink" to={'/'} >
+                            Go Back
+                        </Link>
+                }
             </main>
         </div>
     );

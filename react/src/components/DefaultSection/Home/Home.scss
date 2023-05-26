@@ -1,24 +1,64 @@
 #home-section {
-    padding-top: 100px;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.frame {
+.home-image {
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
+    .home-slider {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .image-box {
+        flex-shrink: 0;
+        width: 100vw;
+        height: 100vh; 
+        position: relative;
+
+        & .shadow {
+            background: linear-gradient(rgba(0, 0, 0, 0.475), rgba(0, 0, 0, 0.037));
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 0.4;
+        }
+    }
+
+    img{
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        object-position: bottom;
+        position: relative;
+    }
+}
+
+.container {
     width: 100vw;
     height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+
+    section {
+        scroll-snap-align: start;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+    }
 }
 
-.test {
-    display: grid;
-    grid-auto-flow: column;
-    scroll-behavior: auto;
-    gap: 0;
-    // overflow-y: hidden;
-    // overflow-x: scroll;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-}
-
-.box {
-    overflow: hidden;
+html {
+    ::-webkit-scrollbar {
+        // display: none;
+    }
 }

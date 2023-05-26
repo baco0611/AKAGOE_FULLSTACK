@@ -11,16 +11,10 @@ function ProductHeader({ slug, about }) {
     const navigate = useNavigate()
 
     useEffect(() => {
-        var productApi = ""
         
         if(slug) {
-            productApi = `http://localhost:3001/title-${slug}`
-        } else {
-            productApi = 'http://localhost:3001/title-company'
-        }
-
-        const fecthAPI = async (api) => {  
-            await axios.get(api)
+            const fecthAPI = async (api) => {  
+                await axios.get(api)
                 .then(response => {
                     const apiData = response.data
                     setContent(apiData.data.content)
@@ -30,9 +24,15 @@ function ProductHeader({ slug, about }) {
                     console.log(error)
                     navigate('/fetcherror')
                 })
-        } 
-        setIsLoading(true)
-        fecthAPI(productApi)
+            } 
+
+            setIsLoading(true)
+            var productApi = `http://localhost:3001/title-${slug}`
+            fecthAPI(productApi)
+        } else {
+            setContent('COMPANY Lorem ipsum dolor sit amet consectetur. Justo purus sed arcu cursus bibendum dui et proin orci. Dui adipiscing accumsan sed commodo placerat pretium sodales. Sit est eros at vitae lacus turpis amet. Viverra cursus cursus tempus in mollis vitae. Sodales fusce et etiam feugiat nunc ac proin quam consequat. Eu id pellentesque massa faucibus vitae fermentum vel elit leo. Pharetra vitae ullamcorper amet vitae. Ullamcorper non mattis arcu sagittis tellus non fermentum et quis. In condimentum orci amet eget sit sit elit sed.')
+            setIsLoading(false)
+        }
     }
     , [slug])
 

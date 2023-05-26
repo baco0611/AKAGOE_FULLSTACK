@@ -81,7 +81,7 @@ const router = createBrowserRouter([
             element: <SignUp/>
         },
         {
-            path: '/fetchError',
+            path: '/fetchError/:slug',
             element: <NotFound/>
         },
         {

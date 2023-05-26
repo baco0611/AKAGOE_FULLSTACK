@@ -1,54 +1,65 @@
 import { useContext, useEffect, useRef, useState } from 'react'
-import skrollr from 'skrollr';
-
 import './Home.scss'
 import { HomeSectionContext } from '../../../context/HomeProvider';
+import { useNavigate } from 'react-router-dom';
+import Loader from '../../../views/Loader/Loader';
+import axios from 'axios';
 
 function Home() {
-
-    const testRef = useRef()
-    const [style, setStyle] = useState({})
-    const [windowY, setWindowY] = useState(0)
+    
+    const [homeData, setHomeData] = useState()
+    const [isLoading, setIsLoading] = useState(true)
+    const navigate = useNavigate()
     const { setThemeColor } = useContext(HomeSectionContext)
-    setThemeColor('default')
 
-    // window.onscroll = () => {
-    //     console.log(testRef.current.getBoundingClientRect())
-    //     const elementRect = testRef.current.getBoundingClientRect()
-    //     // console.log(testRef.current.scrollWidth)
-    //     console.log(window.scrollY)
-    //     console.log(windowY, elementRect.y)
-    //     // console.log(document.documentElement.offsetTop)
+    // Create variable for stationary processing
+    const imgRef = useRef()
+    
+    useEffect(() => {
+        //fetch API
+        const fecthAPI = async (api) => {
+            await axios.get(api)
+            .then(response => {
+                const apiData = response.data
+                        setHomeData(apiData.data)
+                        setIsLoading(false)
+                        setThemeColor('default')
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        navigate('/fetcherror/broken')
+                    })
+            }
 
-    //     if(elementRect.y <= 0 && elementRect.y >= 0) {
-    //         setWindowY(window.scrollY)
-    //     } else setWindowY(0)
+            setIsLoading(true)
+            const homeApi = `http://localhost:3001/home-image`
+            fecthAPI(homeApi)
+    }, [])
 
-    //     if(elementRect.y <= 0 && elementRect.y >= -elementRect.height) {
-    //         window.onscroll = () => window.scroll(0,0)
-    //         setStyle({
-    //             transform: `translate(-541.611px, 0)`
-    //         })
-    //     } else setStyle({})
-    // }
-
-    // window.onscroll = () => window.scroll(0,0)
+    if(isLoading) 
+        return <Loader/>
+        
     return (
         <div id='home-section'>
-            <article className='frame' style={{background: 'brown'}}></article>
-            <article className='frame' style={{background: 'gray'}}></article>
-            <article className='frame' style={{background: 'pink'}}></article>
-            <div className='box'>
-                <div className='test' ref={testRef} style={style}>
-                    <article className='frame' style={{background: 'white'}}></article>
-                    <article className='frame' style={{background: 'blue'}}></article>
-                    <article className='frame' style={{background: 'red'}}></article>
-                    <article className='frame' style={{background: 'yellow'}}></article>
+            <div className='container'>
+                <div className='home-image' ref={imgRef}>
+                    <div className='home-slider'>
+                        {
+                            homeData.map((src, index) => {
+                                return (
+                                    <div key={index}  className='image-box'>
+                                        <div className='shadow'></div>
+                                        <img src={src}/>
+                                    </div>
+                                )
+                            })
+                        }   
+                    </div>
+                </div>
+                <div className='home-content'>
+
                 </div>
             </div>
-            <article className='frame' style={{background: 'brown'}}></article>
-            <article className='frame' style={{background: 'gray'}}></article>
-            <article className='frame' style={{background: 'pink'}}></article>
         </div>
     )
 }

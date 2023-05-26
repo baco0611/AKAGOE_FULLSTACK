@@ -33,6 +33,8 @@ function MainProduct() {
         fecthAPI(api)
     }, [])
 
+    console.log(isLoading)
+
     if(isLoading)
         return <Loader/>
 
