@@ -12,25 +12,25 @@ function Home() {
     const { setThemeColor } = useContext(HomeSectionContext)
     setThemeColor('default')
 
-    window.onscroll = () => {
-        console.log(testRef.current.getBoundingClientRect())
-        const elementRect = testRef.current.getBoundingClientRect()
-        // console.log(testRef.current.scrollWidth)
-        console.log(window.scrollY)
-        console.log(windowY, elementRect.y)
-        // console.log(document.documentElement.offsetTop)
+    // window.onscroll = () => {
+    //     console.log(testRef.current.getBoundingClientRect())
+    //     const elementRect = testRef.current.getBoundingClientRect()
+    //     // console.log(testRef.current.scrollWidth)
+    //     console.log(window.scrollY)
+    //     console.log(windowY, elementRect.y)
+    //     // console.log(document.documentElement.offsetTop)
 
-        if(elementRect.y <= 0 && elementRect.y >= 0) {
-            setWindowY(window.scrollY)
-        } else setWindowY(0)
+    //     if(elementRect.y <= 0 && elementRect.y >= 0) {
+    //         setWindowY(window.scrollY)
+    //     } else setWindowY(0)
 
-        if(elementRect.y <= 0 && elementRect.y >= -elementRect.height) {
-            window.onscroll = () => window.scroll(0,0)
-            setStyle({
-                transform: `translate(-541.611px, 0)`
-            })
-        } else setStyle({})
-    }
+    //     if(elementRect.y <= 0 && elementRect.y >= -elementRect.height) {
+    //         window.onscroll = () => window.scroll(0,0)
+    //         setStyle({
+    //             transform: `translate(-541.611px, 0)`
+    //         })
+    //     } else setStyle({})
+    // }
 
     // window.onscroll = () => window.scroll(0,0)
     return (
