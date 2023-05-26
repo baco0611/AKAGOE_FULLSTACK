@@ -1,8 +1,8 @@
 import { Link, Navigate, createBrowserRouter } from 'react-router-dom'
-import HomeLayout from './views/HomeLayout'
+import HomeLayout from './views/HomeLayout/HomeLayout'
 import Home from './components/DefaultSection/Home/Home'
 import About from './components/DefaultSection/About/About'
-import ShopLayout from './views/ShopLayout'
+import ShopLayout from './views/ShopLayout/ShopLayout'
 import Shop from './components/ShopSection/Shop/Shop'
 import { Product, MainProduct } from './components/DefaultSection/Product'
 import Category from './components/ShopSection/Category/Category'
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
                     element: <About/>,
                     children: [
                         {
-                            path: '/about/:language',
+                            path: '/about',
                             element: <About/>
                         }
                     ]
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
                     element: <Product/>, 
                     children: [
                         {
-                            path:'/product/:slug/:language',
+                            path:'/product/:slug',
                             element: <Product/> 
                         }
                     ]
@@ -79,6 +79,10 @@ const router = createBrowserRouter([
         {
             path: '/signup',
             element: <SignUp/>
+        },
+        {
+            path: '/fetchError',
+            element: <NotFound/>
         },
         {
             path:'*',

@@ -1,1 +1,0 @@
-export { default as akagoeLogo } from './akagoeLogo.png'

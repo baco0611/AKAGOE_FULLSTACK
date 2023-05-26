@@ -1,19 +1,15 @@
-import { Link, Outlet } from "react-router-dom"
-import './HomeLayout.scss'
+import { Link } from "react-router-dom"
 import { useContext, useRef, useState } from "react"
-import { UserContext } from "../context/ContextProvider"
+import { UserContext } from "../../context/ContextProvider"
 import clsx from 'clsx'
+import "./HomeLayout.scss"
 
-import menuBtn from './img/menu-btn.png'
-import userPic from './img/Person.png'
-import shopPic from './img/shop-btn.png'
-import logo from './img/textLogo.png'
-import closeBtn from './img/closeBtn.png'
-import Footer from "./Footer"
+import { HomeSectionContext } from "../../context/HomeProvider"
 
 function HomeLayout() {
 
     const {user, token} = useContext(UserContext)
+    const {themeColor} = useContext(HomeSectionContext)
     const [activeMenu, setActiveMenu] = useState(false)
     const menuRef = useRef()
 
@@ -22,31 +18,68 @@ function HomeLayout() {
     }
 
     return (
-        <div id="default-section">
-            <header className="wraper">
+        <>
+            <header className="wraper"
+                style={{
+                    borderColor: themeColor!='default'?themeColor:'white'
+                }}
+            >
                 <div className="direction">
-                    <img 
-                        src={menuBtn} 
-                        className="icon cursorPointer"
+                    <i
+                        className="icon ti-menu cursorPointer"
+                        style={{
+                            color: themeColor!='default'?themeColor:'white'
+                        }}
                         onClick={handelActiveMenu}    
                     />
-                    <Link to={'/'}>
-                        <img src={logo} className="logo"/>
-                    </Link>
+                    <Link to={'/'} 
+                        className="home-title"
+                        style={{
+                            color: themeColor!='default'?themeColor:'white'
+                        }}
+                    >KIS-GE</Link>
                 </div>
                 <div className="login-user">
                     <Link to={'/shop'}>
-                        <img src={shopPic} className="icon"/>
+                        <i 
+                            className="icon ti-shopping-cart"
+                            style={{
+                                color: themeColor!='default'?themeColor:'white'
+                            }}
+                        />
                     </Link>
-                    <img src={userPic} className="icon"/>
+                    <i 
+                        className="icon ti-user"
+                                style={{
+                            color: themeColor!='default'?themeColor:'white'
+                        }}
+                    />
                     {
                         token &&
-                        <span>{user.name}</span> ||
+                        <span
+                            style={{
+                                color: themeColor!='default'?themeColor:'white'
+                            }}
+                        >{user.name}</span> ||
                         (
-                            <span>
-                                <Link to={'/login'}>Login </Link>
+                            <span 
+                                style={{
+                                    color: themeColor!='default'?themeColor:'white'
+                                }}
+                            >
+                                <Link 
+                                    to={'/login'}
+                                    style={{
+                                        color: themeColor!='default'?themeColor:'white'
+                                    }}
+                                >Login </Link>
                                 / 
-                                <Link to={'/signup'}> Register</Link>
+                                <Link 
+                                    to={'/signup'}
+                                    style={{
+                                        color: themeColor!='default'?themeColor:'white'
+                                    }}
+                                > Register</Link>
                             </span>
                         )
                     }
@@ -61,12 +94,11 @@ function HomeLayout() {
             >
                 <div className="navHeader">
                     <div>
-                        <img 
-                            src={closeBtn}
+                        <i 
                             onClick={handelActiveMenu}
-                            className="cursorPointer"
+                            className="ti-close cursorPointer"
                         />
-                        <img src={logo}/>
+                        <span>KIS-GE</span>
                     </div>
                 </div>
                 <div className="navMain">
@@ -136,13 +168,7 @@ function HomeLayout() {
                     </ul>
                 </div>
             </nav>
-
-            <Outlet/>
-
-            <Footer 
-                theme = 'default'
-            />
-        </div>
+        </>
     )
 }
 

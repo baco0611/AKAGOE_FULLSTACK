@@ -1,23 +1,37 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios';
 import './Explore.scss'
+import Loader from '../../../../../views/Loader/Loader';
+import { useNavigate } from 'react-router-dom';
 
-function Explore({ slug }) {
+function Explore({ slug, language }) {
 
     const [exploreData, setExploreData] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const [mainIndex, setMainIndex] = useState(0)
-
-    // console.log(exploreData)
+    const navigate = useNavigate()
 
     useEffect(() => {
-        const fecthAPI = async (api) => {
-            await fetch(api)   
-            .then(response => response.json())
-            .then(data => setExploreData(data.data))    
+        const fecthAPI = async (api) => {  
+            await axios.get(api)
+                .then(response => {
+                    const apiData = response.data
+                    setExploreData(apiData.data)
+                    setIsLoading(false)
+                })
+                .catch(error => {
+                    console.log(error)
+                    navigate('/fetcherror')
+                })
         } 
         
-        const exploreApi = 'http://localhost:3001/explore-data'
+        setIsLoading(true)
+        const exploreApi = `http://localhost:3001/explore-${slug}`
         fecthAPI(exploreApi)
-    }, [])
+    }, [slug])
+
+    if(isLoading) 
+        return <Loader/>
 
     return (
         <div id='explore-section'>
