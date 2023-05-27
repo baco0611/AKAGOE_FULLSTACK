@@ -1,10 +1,106 @@
+@import '../../../../../variable.scss';
+
 #section-2{
-    color: white;
+    background-color: white;
     position: relative;
+    overflow: hidden;
 
     & .main-img {
         position: absolute;
-        width: 10vw;
+        width: 25vw;
         object-fit: contain;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 1000px);
+        border-radius: 10px;
+        transition: all .4s ease-in-out;
+        visibility: hidden;
+        z-index: 17;
+    }
+    & .active {
+        &-img {
+            transform: translate(-50%, calc(-50% + 50px)) !important;
+            transition: all .8s ease-in-out !important;
+            visibility: visible !important;
+        }
+        &-mission {
+            transform: translate(0, 0) !important;
+            transition: all .8s ease-in-out !important;
+            visibility: visible !important;
+        }
+        &-vision {
+            transform: translate(0, 0) !important;
+            transition: all .8s ease-in-out !important;
+            visibility: visible !important;
+        }
+    }
+}
+
+.section-2 {
+    &-menu {
+        width: 100%;
+        height: 100px;
+        background-color: $default-color;
+    }
+    &-main {
+        width: 100%;
+        height: calc(100% - 100px);
+        display: flex;
+        gap: 25vw;
+        overflow: hidden;
+    }
+    &-content {
+        width: calc(50% - 25vw / 2);
+        color: black;
+        position: relative;
+        display: grid;
+        grid-template-rows: 50% 50%;
+        grid-template-columns: 100%;
+        padding: 0 50px;
+        z-index: 17;
+        
+        & h1 {
+            font-size: 58px;
+            letter-spacing: 15px;
+            color: #00506c;
+        }
+        & h3 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+    }
+    &-mission {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 5vh;
+        transition: all .4s ease-in-out;
+        visibility: hidden;
+        transform: translateX(-1000px);
+
+        grid-row: 1;
+        & h1 {
+            text-align: right;
+        }
+        & h3 {
+            text-align: right;
+        }
+    }
+    &-vision {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 5vh;
+        transition: all .4s ease-in-out;
+        visibility: hidden;
+        transform: translateX(1000px);
+
+        grid-row: 2;
+        & h1 {
+            text-align: left;
+        }
+        & h3 {
+            text-align: left;
+        }
     }
 }
