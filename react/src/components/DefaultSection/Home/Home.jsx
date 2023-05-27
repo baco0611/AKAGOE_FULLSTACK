@@ -8,7 +8,7 @@ import axios from 'axios';
 import Section1 from './Section1';
 
 function Home() {
-    
+
     const [homeData, setHomeData] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
@@ -16,33 +16,33 @@ function Home() {
     const [translate, setTranslate] = useState(0)
     const width = 2 * screen.width + screen.height
     // alert(width)
-    
+
     console.log(translate, window.scrollY)
 
     useEffect(() => {
         //fetch API
         const fecthAPI = async (api) => {
             await axios.get(api)
-            .then(response => {
-                const apiData = response.data
-                        setHomeData(apiData.data)
-                        setIsLoading(false)
-                        setThemeColor('default')
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        navigate('/fetcherror/broken')
-                    })
-            }
+                .then(response => {
+                    const apiData = response.data
+                    setHomeData(apiData.data)
+                    setIsLoading(false)
+                    setThemeColor('default')
+                })
+                .catch(error => {
+                    console.log(error)
+                    navigate('/fetcherror/broken')
+                })
+        }
 
-            setIsLoading(true)
-            const homeApi = `http://localhost:3001/home-image`
-            fecthAPI(homeApi)
+        setIsLoading(true)
+        const homeApi = `http://localhost:3001/home-image`
+        fecthAPI(homeApi)
     }, [])
 
     useEffect(() => {
         const handleScroll = () => {
-            if(window.scrollY <= width)
+            if (window.scrollY <= width)
                 setTranslate(window.scrollY)
             else
                 setTranslate(width)
@@ -55,20 +55,20 @@ function Home() {
         }
     }, [])
 
-    if(isLoading) 
-        return <Loader/>
-        
+    if (isLoading)
+        return <Loader />
+
     return (
         <>
             <div id='home-section'>
                 <div className='container'>
-                    <div className='camera' style={{transform: `translate3d(-${translate}px, 0 ,0)`}}>
-                        <Section1 urlImage={homeData.image1}/>
-                        <Section1 urlImage={homeData.image1}/>
-                        <Section1 urlImage={homeData.image1}/>
+                    <div className='camera' style={{ transform: `translate3d(-${translate}px, 0 ,0)` }}>
+                        <Section1 urlImage={homeData.image1} />
+                        <Section1 urlImage={homeData.image1} />
+                        <Section1 urlImage={homeData.image1} />
                     </div>
                 </div>
-                <div style={{width: '100%', height:`${width}px`}}></div>
+                <div style={{ width: '100%', height: `${width}px` }}></div>
             </div>
         </>
     )
