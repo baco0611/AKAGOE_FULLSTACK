@@ -1,4 +1,12 @@
 {
+    "home-image": {
+        "data": {
+            "image1": "https://drive.google.com/uc?export=view&id=1J2yGfMeVoyull6N8UcyFGHsgiMbfR9jb",
+            "image2": "https://drive.google.com/uc?export=view&id=1BPXakz1tRfEI5O-9Ysma-T3od0FpZpcC",
+            "image3": "https://drive.google.com/uc?export=view&id=1ZNMBl4CtMqmC7kiAkHbwE-TGqMFE1mnU",
+            "image4": "https://drive.google.com/uc?export=view&id=1N6ddqEgJGB5XtBLK3IBRqtVozocjY3p5"
+        }
+    },
     "product": {
         "data": [
             "akagoe",

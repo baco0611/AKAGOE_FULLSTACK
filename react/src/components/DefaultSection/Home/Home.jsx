@@ -1,55 +1,76 @@
 import { useContext, useEffect, useRef, useState } from 'react'
-import skrollr from 'skrollr';
 
 import './Home.scss'
 import { HomeSectionContext } from '../../../context/HomeProvider';
+import { useNavigate } from 'react-router-dom';
+import Loader from '../../../views/Loader/Loader';
+import axios from 'axios';
+import Section1 from './Section1';
 
 function Home() {
 
-    const testRef = useRef()
-    const [style, setStyle] = useState({})
-    const [windowY, setWindowY] = useState(0)
+    const [homeData, setHomeData] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+    const navigate = useNavigate()
     const { setThemeColor } = useContext(HomeSectionContext)
-    setThemeColor('default')
+    const [translate, setTranslate] = useState(0)
+    const width = 2 * screen.width + screen.height
+    // alert(width)
 
-    // window.onscroll = () => {
-    //     console.log(testRef.current.getBoundingClientRect())
-    //     const elementRect = testRef.current.getBoundingClientRect()
-    //     // console.log(testRef.current.scrollWidth)
-    //     console.log(window.scrollY)
-    //     console.log(windowY, elementRect.y)
-    //     // console.log(document.documentElement.offsetTop)
+    console.log(translate, window.scrollY)
 
-    //     if(elementRect.y <= 0 && elementRect.y >= 0) {
-    //         setWindowY(window.scrollY)
-    //     } else setWindowY(0)
+    useEffect(() => {
+        //fetch API
+        const fecthAPI = async (api) => {
+            await axios.get(api)
+                .then(response => {
+                    const apiData = response.data
+                    setHomeData(apiData.data)
+                    setIsLoading(false)
+                    setThemeColor('default')
+                })
+                .catch(error => {
+                    console.log(error)
+                    navigate('/fetcherror/broken')
+                })
+        }
 
-    //     if(elementRect.y <= 0 && elementRect.y >= -elementRect.height) {
-    //         window.onscroll = () => window.scroll(0,0)
-    //         setStyle({
-    //             transform: `translate(-541.611px, 0)`
-    //         })
-    //     } else setStyle({})
-    // }
+        setIsLoading(true)
+        const homeApi = `http://localhost:3001/home-image`
+        fecthAPI(homeApi)
+    }, [])
 
-    // window.onscroll = () => window.scroll(0,0)
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY <= width)
+                setTranslate(window.scrollY)
+            else
+                setTranslate(width)
+        }
+
+        window.addEventListener('scroll', handleScroll)
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
+    if (isLoading)
+        return <Loader />
+
     return (
-        <div id='home-section'>
-            <article className='frame' style={{background: 'brown'}}></article>
-            <article className='frame' style={{background: 'gray'}}></article>
-            <article className='frame' style={{background: 'pink'}}></article>
-            <div className='box'>
-                <div className='test' ref={testRef} style={style}>
-                    <article className='frame' style={{background: 'white'}}></article>
-                    <article className='frame' style={{background: 'blue'}}></article>
-                    <article className='frame' style={{background: 'red'}}></article>
-                    <article className='frame' style={{background: 'yellow'}}></article>
+        <>
+            <div id='home-section'>
+                <div className='container'>
+                    <div className='camera' style={{ transform: `translate3d(-${translate}px, 0 ,0)` }}>
+                        <Section1 urlImage={homeData.image1} />
+                        <Section1 urlImage={homeData.image1} />
+                        <Section1 urlImage={homeData.image1} />
+                    </div>
                 </div>
+                <div style={{ width: '100%', height: `${width}px` }}></div>
             </div>
-            <article className='frame' style={{background: 'brown'}}></article>
-            <article className='frame' style={{background: 'gray'}}></article>
-            <article className='frame' style={{background: 'pink'}}></article>
-        </div>
+        </>
     )
 }
 
