@@ -36,7 +36,7 @@ function ProductItem({data, index}) {
     if(index%2==0)
         return(
             <div className="product-item">
-                <div className="product-img">
+                <div className="product-img wow bounceInLeft" data-wow-duration="2.s">
                     <Link to={`/product/${data}`}>
                         <img src={productData.image} />
                     </Link>
@@ -53,7 +53,7 @@ function ProductItem({data, index}) {
         else
             return(
                 <div className="product-item">
-                    <div className="product-info right">
+                    <div className="product-info right wow bounceInLeft" data-wow-duration="2.s">
                         <h1>{productData.name}</h1>
                         <p>{productData.content}</p>
                         <button>
