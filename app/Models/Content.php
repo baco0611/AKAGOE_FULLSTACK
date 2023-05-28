@@ -11,7 +11,7 @@ class Content extends Model
     
     protected $table = 'contents';
     protected $fillable = [
-        'idname'
+        'titleName_ENG','contentDetails_ENG','contentOverall_ENG','mainColor','imageLogo','imageDetails'
     ];
     
 }

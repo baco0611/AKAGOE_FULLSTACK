@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('contentOverall_JPN')->nullable();
             $table->string('mainColor')->nullable();
             $table->text('imageLogo')->nullable();
+            $table->text('imageDetails')->nullable();
             $table->string('id_name');
         });
     }

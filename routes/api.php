@@ -19,4 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('product', ContentController::class);
+Route::get('product', [ContentController::class,'index'])->name('product.index');
+
+
+Route::get('title/{id_name}', [ContentController::class,'show'])->name('title.show');
