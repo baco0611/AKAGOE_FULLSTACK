@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import clsx from 'clsx'
 import './Section2.scss'
 
 function Section2({ urlImage}) {

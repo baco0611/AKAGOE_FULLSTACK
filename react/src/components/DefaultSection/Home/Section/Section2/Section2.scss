@@ -1,7 +1,9 @@
 @import '../../../../../variable.scss';
 
 #section-2{
-    background-color: white;
+    // background-color: white;
+    background: url('./img/backgroundLaptop.png'), white;
+    background-size: cover;
     position: relative;
     overflow: hidden;
 
