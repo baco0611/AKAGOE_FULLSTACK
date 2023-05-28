@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\CharacterController;
 use App\Http\Controllers\Api\Contentcontroller;
 use App\Http\Controllers\Api\ExploreController;
+use App\Http\Controllers\Api\OtherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +36,6 @@ Route::get('explore/{id_name}', [ExploreController::class,'show'])->name('explor
 
 #character
 Route::get('character/{id_name}', [CharacterController::class,'show'])->name('character.show');
+
+#other
+Route::get('other/{id_name}', [OtherController::class,'show'])->name('other.show');

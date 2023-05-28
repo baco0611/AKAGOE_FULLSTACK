@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ExploreResource;
-use App\Models\Explore;
-use App\Service\ExploreService;
+use App\Http\Resources\OtherResource;
+use App\Service\OtherService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 
-
-class ExploreController extends Controller
+class OtherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,9 +39,9 @@ class ExploreController extends Controller
      */
     public function show($id_name)
     {
-        $exploreservice = new ExploreService();
-        $exp = $exploreservice->get($id_name);
-        $exploreResource = ExploreResource::collection($exp);
+        $otherservice = new OtherService();
+        $other = $otherservice->get($id_name);
+        $exploreResource = OtherResource::collection($other);
         return response()->json([
             'data'=> $exploreResource
         ], HttpResponse::HTTP_OK);

@@ -8,6 +8,7 @@ use App\Http\Resources\IntroduceResource;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Models\Content;
+use App\Service\ContentService;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
@@ -55,7 +56,8 @@ class ContentController extends Controller
      */
     public function showTitle($id_name)
     {
-        $contents = Content::where('id_name', $id_name)->get();
+        $contentservice = new ContentService();
+        $contents = $contentservice->get($id_name);
         $contentResource = ContentResource::collection($contents);
         return response()->json([
             'data'=> $contentResource
@@ -64,7 +66,8 @@ class ContentController extends Controller
 
     public function showIntroduce($id_name)
     {
-        $contents = Content::where('id_name', $id_name)->get();
+        $contentservice = new ContentService();
+        $contents = $contentservice->get($id_name);
         $contentResource = IntroduceResource::collection($contents);
         return response()->json([
             'data'=> $contentResource
