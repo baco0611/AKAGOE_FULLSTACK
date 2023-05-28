@@ -19,7 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+#product
 Route::get('product', [ContentController::class,'index'])->name('product.index');
 
+#title
+Route::get('title/{id_name}', [ContentController::class,'showTitle'])->name('title.show');
 
-Route::get('title/{id_name}', [ContentController::class,'show'])->name('title.show');
+#introduce
+Route::get('introduce/{id_name}',[ContentController::class,'showIntroduce'])->name('introduce.show');

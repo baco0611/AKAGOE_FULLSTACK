@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ContentResource;
+use App\Http\Resources\IntroduceResource;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Models\Content;
@@ -52,7 +53,7 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id_name)
+    public function showTitle($id_name)
     {
         $contents = Content::where('id_name', $id_name)->get();
         $contentResource = ContentResource::collection($contents);
@@ -60,6 +61,16 @@ class ContentController extends Controller
             'data'=> $contentResource
         ], HttpResponse::HTTP_OK);
     }
+
+    public function showIntroduce($id_name)
+    {
+        $contents = Content::where('id_name', $id_name)->get();
+        $contentResource = IntroduceResource::collection($contents);
+        return response()->json([
+            'data'=> $contentResource
+        ], HttpResponse::HTTP_OK);
+    }
+
 
     /**
      * Update the specified resource in storage.

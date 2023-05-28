@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ContentResource extends JsonResource
+class IntroduceResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,16 +14,17 @@ class ContentResource extends JsonResource
      */
     public function convertImage()
     {
-        $name = $this->imageDetails;
-        $pathFull = '/uploads/' . $name;
+        $name = $this->imageLogo;
+        $pathFull = '/uploads/'.$name;
         return 'http://localhost:8000' . '/storage' . $pathFull;
     }
     public function toArray($request)
     {
         return [
             'name'=> $this->titleName_ENG,
-            'content'=> $this->contentOverall_ENG,
-            'image'=> $this->convertImage()
+            'content'=> $this->contentDetails_ENG,
+            'mainColor'=>$this->mainColor,
+            'logo'=> $this->convertImage()
         ];
     }
 }
