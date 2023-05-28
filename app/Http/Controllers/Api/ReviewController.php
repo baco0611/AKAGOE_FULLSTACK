@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\OtherResource;
-use App\Service\OtherService;
+use App\Http\Resources\ReviewResource;
+use App\Service\ReviewService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 
-class OtherController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,11 +39,11 @@ class OtherController extends Controller
      */
     public function show($id_name)
     {
-        $otherservice = new OtherService();
-        $other = $otherservice->get($id_name);
-        $otherResource = OtherResource::collection($other);
+        $reviewservice = new ReviewService();
+        $review = $reviewservice->get($id_name);
+        $reviewResource = ReviewResource::collection($review);
         return response()->json([
-            'data'=>  $otherResource 
+            'data'=>  $reviewResource
         ], HttpResponse::HTTP_OK);
     }
 

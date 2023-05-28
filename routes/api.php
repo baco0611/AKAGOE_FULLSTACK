@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\CharacterController;
 use App\Http\Controllers\Api\Contentcontroller;
 use App\Http\Controllers\Api\ExploreController;
 use App\Http\Controllers\Api\OtherController;
+use App\Http\Controllers\Api\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -39,3 +40,6 @@ Route::get('character/{id_name}', [CharacterController::class,'show'])->name('ch
 
 #other
 Route::get('other/{id_name}', [OtherController::class,'show'])->name('other.show');
+
+#review
+Route::get('review/{id_name}', [ReviewController::class,'show'])->name('review.show');
