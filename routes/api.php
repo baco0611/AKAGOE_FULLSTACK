@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CharacterController;
 use App\Http\Controllers\Api\Contentcontroller;
 use App\Http\Controllers\Api\ExploreController;
 use Illuminate\Http\Request;
@@ -31,3 +32,6 @@ Route::get('introduce/{id_name}', [ContentController::class,'showIntroduce'])->n
 
 #explore
 Route::get('explore/{id_name}', [ExploreController::class,'show'])->name('explore.show');
+
+#character
+Route::get('character/{id_name}', [CharacterController::class,'show'])->name('character.show');
