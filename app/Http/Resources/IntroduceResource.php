@@ -15,7 +15,7 @@ class IntroduceResource extends JsonResource
     public function convertImage()
     {
         $name = $this->imageLogo;
-        $pathFull = '/uploads/'.$name;
+        $pathFull = '/uploads/uploads_' .$this->id_name. '/'. $name;
         return 'http://localhost:8000' . '/storage' . $pathFull;
     }
     public function toArray($request)

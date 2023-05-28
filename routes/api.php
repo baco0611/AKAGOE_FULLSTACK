@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Contentcontroller;
+use App\Http\Controllers\Api\ExploreController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,7 @@ Route::get('product', [ContentController::class,'index'])->name('product.index')
 Route::get('title/{id_name}', [ContentController::class,'showTitle'])->name('title.show');
 
 #introduce
-Route::get('introduce/{id_name}',[ContentController::class,'showIntroduce'])->name('introduce.show');
+Route::get('introduce/{id_name}', [ContentController::class,'showIntroduce'])->name('introduce.show');
+
+#explore
+Route::get('explore/{id_name}', [ExploreController::class,'show'])->name('explore.show');
