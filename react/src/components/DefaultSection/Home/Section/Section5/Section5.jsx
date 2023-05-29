@@ -15,7 +15,7 @@ function Section5() {
                         <h2>
                             about us
                         </h2>
-                        <p>This is where you can better understand us and our working process</p>
+                        <p>This is where you can better understand us and our working process.</p>
                         <Link to={'/about'}>CLICK ME!</Link>
                     </div>
                 </div>
@@ -27,7 +27,7 @@ function Section5() {
                         <h2>
                             product
                         </h2>
-                        <p>This is where you can better understand us and our working process</p>
+                        <p>This is where you can see works made and released by our participants.</p>
                         <Link to={'/product'}>CLICK ME!</Link>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ function Section5() {
                         <h2>
                             shopping
                         </h2>
-                        <p>This is where you can better understand us and our working process</p>
+                        <p>This is where you can shop for our game and project related products.</p>
                         <Link to={'/shop'}>CLICK ME!</Link>
                     </div>
                 </div>
