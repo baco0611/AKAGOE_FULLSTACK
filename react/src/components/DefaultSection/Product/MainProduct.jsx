@@ -6,37 +6,30 @@ import Loader from "../../../views/Loader/Loader"
 import axios from "axios"
 import { HomeSectionContext } from '../../../context/HomeProvider'
 import ProductItem from './MainProductElement/ProductItem'
+import { useQuery } from 'react-query'
 
 function MainProduct() {
 
-    const [isLoading, setIsLoading] = useState(true)
-    const [gameList, setGameList] = useState([])
-    const navigate = useNavigate()
     const { setThemeColor } = useContext(HomeSectionContext)
+    const navigate = useNavigate()
     
-    useEffect(() => {
-        const fecthAPI = async (api) => {  
-            await axios.get(api)
-            .then(response => {
-                const apiData = response.data
-                    setGameList(apiData.data)
-                    setIsLoading(false)
-                    setThemeColor('#00506c')
-                })
-                .catch(error => {
-                    console.log(error)
-                    navigate('/fetcherror')
-                })
-        } 
-
-        const api = 'http://localhost:3001/product'
-        fecthAPI(api)
-    }, [])
-
-    console.log(isLoading)
-
+    const fecthAPI = async () => {
+        const productApi = `http://localhost:3001/product`
+        const response = await axios.get(productApi)
+        setThemeColor('#00506c')
+        return response.data.data
+    }
+    
+    const { data , isLoading, isError} = useQuery(`product`, fecthAPI,{
+        cacheTime: Infinity,
+        refetchOnWindowFocus: false,
+    })
+    
     if(isLoading)
         return <Loader/>
+
+    if(isError)
+        navigate('/fectherror')
 
     return (
         <div>
@@ -44,7 +37,7 @@ function MainProduct() {
             <div id="product-main">
                 <div className='wraper'>
                     {
-                        gameList.map((data, index) => <ProductItem key={index} data={data} index={index}/>)
+                       data.map((slug, index) => <ProductItem key={index} slug={slug} index={index}/>)
                     }
                 </div>
             </div>

@@ -1,38 +1,32 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
 import Loader from "../../../../../views/Loader/Loader"
 import './Review.scss'
 import ReviewBlock from "./ReviewBlock"
 import { useNavigate } from "react-router-dom"
+import { useQuery } from "react-query"
 
 function Review({ slug, language }) {
 
-    const [reviewData, setReviewData] = useState()
-    const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
 
-    useEffect(() => {
-        const fecthAPI = async (api) => {  
-            await axios.get(api)
-                .then(response => {
-                    const apiData = response.data
-                    setReviewData(apiData.data)
-                    setIsLoading(false)
-                })
-                .catch(error => {
-                    console.log(error)
-                    navigate('/fetcherror')
-                })
-        } 
-        
-        setIsLoading(true)
+    const fecthAPI = (slug) => {
         const reviewApi = `http://localhost:3001/review-${slug}`
-        fecthAPI(reviewApi)
-    }, [slug])
+        return async () => {
+            const response = await axios.get(reviewApi)
+            return response.data.data
+        }
+    }
 
+    const { data , isLoading, isError} = useQuery(`review-${slug}`, fecthAPI(slug),{
+        cacheTime: Infinity,
+        refetchOnWindowFocus: false,
+    })
 
     if(isLoading)
         return <Loader/>
+
+    if(isError)
+        navigate('/fectherror')
 
     return (
         <div id="review-section">
@@ -40,7 +34,7 @@ function Review({ slug, language }) {
                 <h1>What customers say about KIS-GE?</h1>
                 <div className="review-main">
                     {
-                        reviewData.map((data, index) => {
+                        data.map((data, index) => {
                             return(
                                 <ReviewBlock data={data} key={index}/>
                             )

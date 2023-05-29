@@ -1,37 +1,33 @@
-import { useEffect, useState } from 'react'
 import axios from 'axios';
 import './Explore.scss'
 import Loader from '../../../../../views/Loader/Loader';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { useState } from 'react';
 
 function Explore({ slug, language }) {
 
-    const [exploreData, setExploreData] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
     const [mainIndex, setMainIndex] = useState(0)
     const navigate = useNavigate()
 
-    useEffect(() => {
-        const fecthAPI = async (api) => {  
-            await axios.get(api)
-                .then(response => {
-                    const apiData = response.data
-                    setExploreData(apiData.data)
-                    setIsLoading(false)
-                })
-                .catch(error => {
-                    console.log(error)
-                    navigate('/fetcherror')
-                })
-        } 
-        
-        setIsLoading(true)
+    const fecthAPI = (slug) => {
         const exploreApi = `http://localhost:3001/explore-${slug}`
-        fecthAPI(exploreApi)
-    }, [slug])
+        return async () => {
+            const response = await axios.get(exploreApi)
+            return response.data.data
+        }
+    }
 
-    if(isLoading) 
+    const { data , isLoading, isError} = useQuery(`explore-${slug}`, fecthAPI(slug),{
+        cacheTime: Infinity,
+        refetchOnWindowFocus: false,
+    })
+
+    if(isLoading)
         return <Loader/>
+
+    if(isError)
+        navigate('/fectherror')
 
     return (
         <div id='explore-section'>
@@ -41,7 +37,7 @@ function Explore({ slug, language }) {
                     <div className='line'></div>
                     <div className='explore-main-content'>
                         {
-                            exploreData.map((data, index) => {
+                           data.map((data, index) => {
                                 return (
                                     <p 
                                         className={index === mainIndex ? '' : 'none'} 
@@ -55,7 +51,7 @@ function Explore({ slug, language }) {
                 </div>
                 <div className='explore-img'>
                     {
-                        exploreData.map((data, index) => {
+                       data.map((data, index) => {
                             return (
                                 <input 
                                     key={index} 
@@ -71,7 +67,7 @@ function Explore({ slug, language }) {
 
                     <div className='explore-img-area'>
                         {
-                            exploreData.map((data, index) => {
+                           data.map((data, index) => {
                                 return (
                                     <label 
                                         key={index} 
@@ -88,12 +84,11 @@ function Explore({ slug, language }) {
 
                     <div className="dots">
                         {
-                            exploreData.map((data, index) => {
+                           data.map((data, index) => {
                                 return (
                                     <label 
                                         key={index} 
                                         htmlFor={`img-${index}`}
-                                        // onClick={() => setMainIndex(index)}    
                                     />
                                 )
                             })
@@ -102,7 +97,7 @@ function Explore({ slug, language }) {
 
                     <div className='explore-main-content'>
                         {
-                            exploreData.map((data, index) => {
+                           data.map((data, index) => {
                                 return (
                                     <p 
                                         className={index === mainIndex ? '' : 'none'} 

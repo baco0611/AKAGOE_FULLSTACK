@@ -1,57 +1,50 @@
-import { useContext, useEffect, useState } from 'react'
 import './Introduce.scss'
 import axios from 'axios'
-import { HomeSectionContext } from '../../../../../context/HomeProvider'
 import Loader from '../../../../../views/Loader/Loader'
 import { useNavigate } from 'react-router-dom'
+import { useQuery } from 'react-query'
 
 function Introduce({ slug, language}) {
 
-    const [introduceData, setIntroduceData] = useState({name: '',content: ' ',mainColor: ''})
-    const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
 
-    useEffect(() => {
-        //fetch API
-            const fecthAPI = async (api) => {
-                await axios.get(api)
-                    .then(response => {
-                        const apiData = response.data
-                        setIntroduceData(apiData.data)
-                        setIsLoading(false)
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        navigate('/fetcherror')
-                    })
-            }
+    const fecthAPI = (slug) => {
+        const introduceApi = `http://localhost:3001/introduce-${slug}`
+        return async () => {
+            const response = await axios.get(introduceApi)
+            return response.data.data
+        }
+    }
 
-            setIsLoading(true)
-            const introduceApi = `http://localhost:3001/introduce-${slug}`
-            fecthAPI(introduceApi)
-    }, [slug])
+    const { data , isLoading, isError} = useQuery(`introduce-${slug}`, fecthAPI(slug),{
+        cacheTime: Infinity,
+        refetchOnWindowFocus: false,
+    })
 
-    if(isLoading) 
+    if(isLoading)
         return <Loader/>
+
+    if(isError)
+        navigate('/fectherror')
 
     return (
         <div id="introduce-section">
             <div className='introduce-left'>
                 {/* <img src={Img[`${slug}Logo`]}/> */}
-                <img src={introduceData.logo}/>
+                <img src={data.logo}/>
             </div>
             <div className='introduce-right'>
                 <div>
                     <div className='introduce-title'>
-                        <div className='introduce-line' style={{background: introduceData.mainColor}}></div>
-                        <h3 style={{color: introduceData.mainColor || '#6BABAB'}}>About product</h3>
+                        <div className='introduce-line' style={{background: data.mainColor}}></div>
+                        <h3 style={{color: data.mainColor || '#6BABAB'}}>About product</h3>
                     </div>
 
-                    <h1>{introduceData.name}</h1>
+                    <h1>{data.name}</h1>
 
                     <ul className='introduce-content'>
                         {
-                            introduceData.content.split('/r/n').map((row, index) => {
+                            data.content.split('/r/n').map((row, index) => {
                                 return <li key={index}>{row}</li>
                             })
                         }
