@@ -33,22 +33,7 @@
         transition: 0.5s;
         animation: animate 6s linear infinite;
     }
-    
-    .linkedin:hover span:nth-child(1) {
-        border: none;
-        background: #f07e6e;
-    }
-    
-    .twitter:hover span:nth-child(1) {
-        border: none;
-        background: #84cdfa;
-    }
-    
-    .github:hover span:nth-child(1) {
-        border: none;
-        background: #5ad1cd;
-    }
-    
+
     .square span:nth-child(2) {
         position: absolute;
         top: 0;
@@ -88,21 +73,6 @@
         animation: animate2 10s linear infinite;
     }
     
-    .linkedin:hover span:nth-child(3) {
-        border: none;
-        background: #f07e6e;
-    }
-    
-    .twitter:hover span:nth-child(3) {
-        border: none;
-        background: #84cdfa;
-    }
-    
-    .github:hover span:nth-child(3) {
-        border: none;
-        background: #5ad1cd;
-    }
-    
     .content {
         position: relative;
         padding: 40px 60px;
@@ -130,12 +100,11 @@
         text-decoration: none;
         color: #000;
         font-weight: 600;
-        // border-radius: 73% 30% 70% 56% / 49% 90% 56% 51%;
     }
     
     .content a:hover {
-        background: white;
-        color: #333;
+        color: white;
+        background: #333;
     }
     
     @keyframes animate {

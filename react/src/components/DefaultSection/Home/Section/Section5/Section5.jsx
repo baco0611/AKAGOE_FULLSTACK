@@ -7,11 +7,11 @@ function Section5() {
             <div className='section-menu'></div>
             <div className='section-5-main'>
 
-                <div class="square">
+                <div className="square">
                     <span></span>
                     <span></span>
                     <span></span>
-                    <div class="content">
+                    <div className="content">
                         <h2>
                             about us
                         </h2>
@@ -19,11 +19,11 @@ function Section5() {
                         <Link to={'/about'}>CLICK ME!</Link>
                     </div>
                 </div>
-                <div class="square">
+                <div className="square">
                     <span></span>
                     <span></span>
                     <span></span>
-                    <div class="content">
+                    <div className="content">
                         <h2>
                             product
                         </h2>
@@ -31,11 +31,11 @@ function Section5() {
                         <Link to={'/product'}>CLICK ME!</Link>
                     </div>
                 </div>
-                <div class="square">
+                <div className="square">
                     <span></span>
                     <span></span>
                     <span></span>
-                    <div class="content">
+                    <div className="content">
                         <h2>
                             shopping
                         </h2>
