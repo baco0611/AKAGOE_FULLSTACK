@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 import './Section2.scss'
 import clsx from "clsx"
+import image from '../img/background2.jpg'
 
-function Section2({ urlImage}) {
+function Section2() {
 
     const [active, setActive] = useState(false)
     const sectionRef = useRef()
@@ -36,7 +37,7 @@ function Section2({ urlImage}) {
                 opacity: 1 - ((2*windowWidth - window.scrollY)/(windowWidth*2))
             }}
         >
-            <img className="main-img" src={urlImage}/>
+            <img className="main-img" src={image}/>
             <div className="section-menu"></div>
             <div className="section-2-main">
                 <div className="section-2-content">

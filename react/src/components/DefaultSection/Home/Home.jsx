@@ -14,48 +14,23 @@ import Section5 from './Section/Section5/Section5';
 import { useQuery } from 'react-query';
 
 function Home() {
-    
-    // const [homeData, setHomeData] = useState([])
-    // const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
     const { setThemeColor } = useContext(HomeSectionContext)
     const [translate, setTranslate] = useState(0)
     const width = 4 * window.innerWidth + window.innerHeight 
-
-
-    // useEffect(() => {
-    //     //fetch API
-    //     const fecthAPI = async (api) => {
-    //         await axios.get(api)
-    //         .then(response => {
-    //             const apiData = response.data
-    //                     setHomeData(apiData.data)
-    //                     setIsLoading(false)
-    //                     setThemeColor('default')
-    //                 })
-    //                 .catch(error => {
-    //                     console.log(error)
-    //                     navigate('/fetcherror/broken')
-    //                 })
-    //         }
-
-    //         setIsLoading(true)
-    //         const homeApi = `http://localhost:3001/home-image`
-    //         fecthAPI(homeApi)
-    // }, [])
     
-    const fecthAPI = (api) => {
-        return async () => {
-            const response = await axios.get(api)
-            return response.data.data
-        }
-    }
+    // const fecthAPI = (api) => {
+    //     return async () => {
+    //         const response = await axios.get(api)
+    //         return response.data.data
+    //     }
+    // }
     
-    const homeApi = 'http://localhost:3001/home-image'
-    const { data, isLoading, error } = useQuery('myData', fecthAPI(homeApi), {
-        cacheTime: Infinity,
-        refetchOnWindowFocus: false,
-    })
+    // const homeApi = 'http://localhost:3001/home-image'
+    // const { data, isLoading, error } = useQuery('myData', fecthAPI(homeApi), {
+    //     cacheTime: Infinity,
+    //     refetchOnWindowFocus: false,
+    // })
     setThemeColor('default')
 
     useEffect(() => {
@@ -70,11 +45,11 @@ function Home() {
         }
     }, [])
 
-    if(isLoading) 
-        return <Loader/>
+    // if(isLoading) 
+    //     return <Loader/>
     
-    if(error)
-        navigate('/fetcherror/broken')
+    // if(error)
+    //     navigate('/fetcherror/broken')
 
     return (
         <div id='home-section'>
@@ -82,9 +57,9 @@ function Home() {
                 {/* <p style={{position: 'absolute', zIndex: 25}}>{`${window.innerWidth} -- ${window.innerHeight} -- ${width} -- ${3 * window.innerWidth + window.innerHeight} -- ${window.scrollY}`}</p> */}
                 <Title/>
                 <div className='camera' style={{transform: `translate3d(-${translate}px, 0 ,0)`}}>
-                    <Section1 urlImage={data.image1}/>
-                    <Section3 urlImage={data.image4}/>
-                    <Section2 urlImage={data.image2}/>
+                    <Section1/>
+                    <Section3/>
+                    <Section2/>
                     <Section4/>
                     <Section5/>
                 </div>

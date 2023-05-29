@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import './Section3.scss'
 import clsx from 'clsx'
 
-function Section3({ urlImage }) {
+function Section3() {
 
     const [sectionX, setSectionX] = useState(0)
     const sectionRef = useRef()
@@ -38,9 +38,6 @@ function Section3({ urlImage }) {
                 'active': active
             })}
             style={{
-                background: `
-                    linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
-                    url(${urlImage})`,
                 opacity: 1 - (sectionX/(window.innerWidth*1.7))
             }}
         >
