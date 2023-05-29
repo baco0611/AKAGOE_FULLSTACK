@@ -34,7 +34,7 @@ function Section4() {
                 'active': active
             })}
         >
-            <div className='section-4-menu'></div>
+            <div className='section-menu'></div>
             <div className='section-4-main'>
                 <div className='section-4-img'>
                     <img src={kondoImg}/>

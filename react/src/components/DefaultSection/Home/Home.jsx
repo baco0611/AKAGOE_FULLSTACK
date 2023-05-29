@@ -10,6 +10,7 @@ import Title from './Title/Title';
 import Section2 from './Section/Section2/Section2';
 import Section3 from './Section/Section3/Section3';
 import Section4 from './Section/Section4/Section4';
+import Section5 from './Section/Section5/Section5';
 
 function Home() {
     
@@ -18,7 +19,7 @@ function Home() {
     const navigate = useNavigate()
     const { setThemeColor } = useContext(HomeSectionContext)
     const [translate, setTranslate] = useState(0)
-    const width = 3 * window.innerWidth + window.innerHeight 
+    const width = 4 * window.innerWidth + window.innerHeight 
 
 
     useEffect(() => {
@@ -64,14 +65,10 @@ function Home() {
                 <Title/>
                 <div className='camera' style={{transform: `translate3d(-${translate}px, 0 ,0)`}}>
                     <Section1 urlImage={homeData.image1}/>
+                    <Section3 urlImage={homeData.image4}/>
                     <Section2 urlImage={homeData.image2}/>
-                    <Section3 urlImage={{
-                        image1: homeData.image1,
-                        image2: homeData.image2,
-                        image3: homeData.image3,
-                        image4: homeData.image4
-                    }}/>
                     <Section4/>
+                    <Section5/>
                 </div>
             </div>
             <div style={{width: '100%', height:`${width}px`}}></div>

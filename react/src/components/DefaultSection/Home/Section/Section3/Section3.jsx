@@ -40,7 +40,7 @@ function Section3({ urlImage }) {
             style={{
                 background: `
                     linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
-                    url(${urlImage.image4})`,
+                    url(${urlImage})`,
                 opacity: 1 - (sectionX/(window.innerWidth*1.7))
             }}
         >
