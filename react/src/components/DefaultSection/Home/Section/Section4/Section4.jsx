@@ -27,9 +27,13 @@ function Section4() {
     }, [])
 
     return (
-        <section ref={sectionRef} id='section-4' className={clsx('section-4', {
-            'active': active
-        })}>
+        <section 
+            ref={sectionRef} 
+            id='section-4' 
+            className={clsx('section-4', {
+                'active': active
+            })}
+        >
             <div className='section-4-menu'></div>
             <div className='section-4-main'>
                 <div className='section-4-img'>
