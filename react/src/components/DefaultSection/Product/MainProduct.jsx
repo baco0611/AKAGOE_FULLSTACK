@@ -1,41 +1,47 @@
 import './MainProduct.scss'
 import { useNavigate}  from "react-router-dom"
 import ProductHeader from "./ProductHeader"
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import Loader from "../../../views/Loader/Loader"
 import axios from "axios"
 import { HomeSectionContext } from '../../../context/HomeProvider'
 import ProductItem from './MainProductElement/ProductItem'
 import { useQuery } from 'react-query'
+import { UserContext } from '../../../context/ContextProvider'
 
 function MainProduct() {
 
     const { setThemeColor } = useContext(HomeSectionContext)
     const navigate = useNavigate()
+    const { apiURL } = useContext(UserContext); 
     
     const fecthAPI = () => {
-        const productApi = `http://localhost:3001/product`
+        const productApi = `${apiURL}/product`
         return async () => {
             const result = await axios.get(productApi) 
             .then(response => {
                     const restData = response.data
                     setThemeColor('#00506c')
-                    return restData.data
+                    return restData.product
                 })
                 .catch(error => {
                     console.log(error)
                     navigate('/fectherror')
                 })
-
             return result
         }
     }
     
-    const { data , isLoading, isError} = useQuery(`product`, fecthAPI,{
+    const { data , isLoading, isError} = useQuery(`product`, fecthAPI(),{
         cacheTime: Infinity,
         refetchOnWindowFocus: false,
     })
-    
+
+    var productData = []
+
+    if(data)
+        productData = data.data
+
     if(isLoading)
         return <Loader/>
 
@@ -48,7 +54,7 @@ function MainProduct() {
             <div id="product-main">
                 <div className='wraper'>
                     {
-                       data.map((slug, index) => <ProductItem key={index} slug={slug} index={index}/>)
+                       productData.map((slug, index) => <ProductItem key={index} slug={slug} index={index}/>)
                     }
                 </div>
             </div>

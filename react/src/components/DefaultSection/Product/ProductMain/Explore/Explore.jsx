@@ -4,14 +4,17 @@ import Loader from '../../../../../views/Loader/Loader';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { useState } from 'react';
+import { useContext } from 'react'
+import { UserContext } from '../../../../../context/ContextProvider'
 
-function Explore({ slug, language }) {
+function Explore({ slug, language}) {
 
+    const { apiURL } = useContext(UserContext); 
     const [mainIndex, setMainIndex] = useState(0)
     const navigate = useNavigate()
 
     const fecthAPI = (slug) => {
-        const exxploreApi = `http://localhost:3001/explore-${slug}`
+        const exxploreApi = `${apiURL}/explore/${slug}`
         return async () => {
             const result = await axios.get(exxploreApi) 
                 .then(response => {

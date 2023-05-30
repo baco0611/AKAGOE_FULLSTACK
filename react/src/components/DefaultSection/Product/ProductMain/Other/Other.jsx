@@ -4,13 +4,17 @@ import axios from 'axios'
 import OtherItem from './OtherItem'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
+import { useContext } from 'react'
+import { UserContext } from '../../../../../context/ContextProvider'
 
-function Other({ slug, language }) {
+function Other({ slug, language}) {
+
+    const { apiURL } = useContext(UserContext); 
 
     var navigate = useNavigate()
 
     const fecthAPI = (slug) => {
-        const otherApi = `http://localhost:3001/other-${slug}`
+        const otherApi = `${apiURL}/other/${slug}`
         return async () => {
             const result = await axios.get(otherApi) 
                 .then(response => {

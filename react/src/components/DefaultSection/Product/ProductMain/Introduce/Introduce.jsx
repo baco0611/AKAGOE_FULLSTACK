@@ -3,18 +3,22 @@ import axios from 'axios'
 import Loader from '../../../../../views/Loader/Loader'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
+import { useContext } from 'react'
+import { UserContext } from '../../../../../context/ContextProvider'
 
 function Introduce({ slug, language}) {
 
+    const { apiURL } = useContext(UserContext); 
     const navigate = useNavigate()
 
     const fecthAPI = (slug) => {
-        const introduceApi = `http://localhost:3001/introduce-${slug}`
+        const introduceApi = `${apiURL}/introduce/${slug}`
         return async () => {
             const result = await axios.get(introduceApi) 
                 .then(response => {
                     const restData = response.data
-                    return restData.data
+                    // return restData.data
+                    return restData.data[0]
                 })
                 .catch(error => {
                     console.log(error)

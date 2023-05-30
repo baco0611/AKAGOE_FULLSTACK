@@ -4,13 +4,16 @@ import './Review.scss'
 import ReviewBlock from "./ReviewBlock"
 import { useNavigate } from "react-router-dom"
 import { useQuery } from "react-query"
+import { useContext } from 'react'
+import { UserContext } from '../../../../../context/ContextProvider'
 
 function Review({ slug, language }) {
 
+    const { apiURL } = useContext(UserContext); 
     const navigate = useNavigate()
 
     const fecthAPI = (slug) => {
-        const reviewApi = `http://localhost:3001/review-${slug}`
+        const reviewApi = `${apiURL}/review/${slug}`
         return async () => {
             const result = await axios.get(reviewApi) 
                 .then(response => {

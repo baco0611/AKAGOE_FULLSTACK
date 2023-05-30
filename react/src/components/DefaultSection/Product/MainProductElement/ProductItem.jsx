@@ -2,18 +2,21 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import Loader from "../../../../views/Loader/Loader"
 import { useQuery } from "react-query"
+import { useContext } from 'react'
+import { UserContext } from "../../../../context/ContextProvider"
 
 function ProductItem({slug, index}) {
 
     const navigate = useNavigate()
+    const { apiURL } = useContext(UserContext); 
 
     const fecthAPI = (slug) => {
-        const titleApi = `http://localhost:3001/title-${slug}`
+        const titleApi = `${apiURL}/title/${slug}`
         return async () => {
             const result = await axios.get(titleApi) 
                 .then(response => {
                     const restData = response.data
-                    return restData.data
+                    return restData.data[0]
                 })
                 .catch(error => {
                     console.log(error)

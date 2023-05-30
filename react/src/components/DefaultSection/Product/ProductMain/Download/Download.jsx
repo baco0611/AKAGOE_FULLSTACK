@@ -4,6 +4,7 @@ import axios from 'axios'
 import Loader from '../../../../../views/Loader/Loader'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
+import * as Model from './img'
 
 function Download({ slug, language }) {
 
