@@ -11,8 +11,16 @@ function Introduce({ slug, language}) {
     const fecthAPI = (slug) => {
         const introduceApi = `http://localhost:3001/introduce-${slug}`
         return async () => {
-            const response = await axios.get(introduceApi)
-            return response.data.data
+            const result = await axios.get(introduceApi) 
+                .then(response => {
+                    const restData = response.data
+                    return restData.data
+                })
+                .catch(error => {
+                    console.log(error)
+                    navigate('/fectherror')
+                })
+            return result
         }
     }
 

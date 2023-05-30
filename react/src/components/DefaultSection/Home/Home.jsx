@@ -19,10 +19,20 @@ function Home() {
     const [translate, setTranslate] = useState(0)
     const width = 4 * window.innerWidth + window.innerHeight 
     
-    // const fecthAPI = (api) => {
+    // const fecthAPI = (slug) => {
+    //     const reviewApi = `http://localhost:3001/review-${slug}`
     //     return async () => {
-    //         const response = await axios.get(api)
-    //         return response.data.data
+    //         const result = await axios.get(reviewApi) 
+    //             .then(response => {
+    //                 const restData = response.data
+    //                 return restData.data
+    //             })
+    //             .catch(error => {
+    //                 console.log(error)
+    //                 navigate('/fectherror')
+    //             })
+
+    //         return result
     //     }
     // }
     
@@ -31,7 +41,9 @@ function Home() {
     //     cacheTime: Infinity,
     //     refetchOnWindowFocus: false,
     // })
-    setThemeColor('default')
+
+    useEffect(() => setThemeColor('default'), [])
+    
 
     useEffect(() => {
         const handleScroll = () => {

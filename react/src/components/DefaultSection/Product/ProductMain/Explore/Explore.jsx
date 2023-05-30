@@ -11,10 +11,19 @@ function Explore({ slug, language }) {
     const navigate = useNavigate()
 
     const fecthAPI = (slug) => {
-        const exploreApi = `http://localhost:3001/explore-${slug}`
+        const exxploreApi = `http://localhost:3001/explore-${slug}`
         return async () => {
-            const response = await axios.get(exploreApi)
-            return response.data.data
+            const result = await axios.get(exxploreApi) 
+                .then(response => {
+                    const restData = response.data
+                    return restData.data
+                })
+                .catch(error => {
+                    console.log(error)
+                    navigate('/fectherror')
+                })
+
+            return result
         }
     }
 

@@ -10,8 +10,17 @@ function ProductItem({slug, index}) {
     const fecthAPI = (slug) => {
         const titleApi = `http://localhost:3001/title-${slug}`
         return async () => {
-            const response = await axios.get(titleApi)
-            return response.data.data
+            const result = await axios.get(titleApi) 
+                .then(response => {
+                    const restData = response.data
+                    return restData.data
+                })
+                .catch(error => {
+                    console.log(error)
+                    navigate('/fectherror')
+                })
+
+            return result
         }
     }
 

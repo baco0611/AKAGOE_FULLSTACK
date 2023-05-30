@@ -13,11 +13,22 @@ function MainProduct() {
     const { setThemeColor } = useContext(HomeSectionContext)
     const navigate = useNavigate()
     
-    const fecthAPI = async () => {
+    const fecthAPI = () => {
         const productApi = `http://localhost:3001/product`
-        const response = await axios.get(productApi)
-        setThemeColor('#00506c')
-        return response.data.data
+        return async () => {
+            const result = await axios.get(productApi) 
+            .then(response => {
+                    const restData = response.data
+                    setThemeColor('#00506c')
+                    return restData.data
+                })
+                .catch(error => {
+                    console.log(error)
+                    navigate('/fectherror')
+                })
+
+            return result
+        }
     }
     
     const { data , isLoading, isError} = useQuery(`product`, fecthAPI,{

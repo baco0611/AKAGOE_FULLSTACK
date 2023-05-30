@@ -12,8 +12,17 @@ function Other({ slug, language }) {
     const fecthAPI = (slug) => {
         const otherApi = `http://localhost:3001/other-${slug}`
         return async () => {
-            const response = await axios.get(otherApi)
-            return response.data.data
+            const result = await axios.get(otherApi) 
+                .then(response => {
+                    const restData = response.data
+                    return restData.data
+                })
+                .catch(error => {
+                    console.log(error)
+                    navigate('/fectherror')
+                })
+
+            return result
         }
     }
 

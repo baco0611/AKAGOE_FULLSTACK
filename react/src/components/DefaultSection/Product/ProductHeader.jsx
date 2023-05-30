@@ -3,41 +3,58 @@ import './ProductHeader.scss'
 import Loader from '../../../views/Loader/Loader'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { useQuery } from 'react-query'
 
 function ProductHeader({ slug, about }) {
 
-    const [content, setContent] = useState()
-    const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
 
-    useEffect(() => {
-        
+    const fecthAPI = (slug) => {
         if(slug) {
-            const fecthAPI = async (api) => {  
-                await axios.get(api)
+            const titleApi = `http://localhost:3001/title-${slug}`
+            return async () => {
+                const result = await axios.get(titleApi) 
                 .then(response => {
-                    const apiData = response.data
-                    setContent(apiData.data.content)
-                    setIsLoading(false)
+                    const restData = response.data
+                    return restData.data
                 })
                 .catch(error => {
                     console.log(error)
-                    navigate('/fetcherror')
+                    navigate('/fectherror')
                 })
-            } 
 
-            setIsLoading(true)
-            var productApi = `http://localhost:3001/title-${slug}`
-            fecthAPI(productApi)
-        } else {
-            setContent('COMPANY Lorem ipsum dolor sit amet consectetur. Justo purus sed arcu cursus bibendum dui et proin orci. Dui adipiscing accumsan sed commodo placerat pretium sodales. Sit est eros at vitae lacus turpis amet. Viverra cursus cursus tempus in mollis vitae. Sodales fusce et etiam feugiat nunc ac proin quam consequat. Eu id pellentesque massa faucibus vitae fermentum vel elit leo. Pharetra vitae ullamcorper amet vitae. Ullamcorper non mattis arcu sagittis tellus non fermentum et quis. In condimentum orci amet eget sit sit elit sed.')
-            setIsLoading(false)
+            return result
+            }
+        }
+        else {
+            const titleApi = `http://localhost:3001/title`
+            return async () => {
+                // const result = await axios.get(titleApi) 
+                // .then(response => {
+                //     const restData = response.data
+                //     return restData.data
+                // })
+                // .catch(error => {
+                //     console.log(error)
+                //     navigate('/fectherror')
+                // })
+
+                // return result
+                return "COMPANY Lorem ipsum dolor sit amet consectetur. Justo purus sed arcu cursus bibendum dui et proin orci. Dui adipiscing accumsan sed commodo placerat pretium sodales. Sit est eros at vitae lacus turpis amet. Viverra cursus cursus tempus in mollis vitae. Sodales fusce et etiam feugiat nunc ac proin quam consequat. Eu id pellentesque massa faucibus vitae fermentum vel elit leo. Pharetra vitae ullamcorper amet vitae. Ullamcorper non mattis arcu sagittis tellus non fermentum et quis. In condimentum orci amet eget sit sit elit sed."
+            }
         }
     }
-    , [slug])
+
+    const { data , isLoading, isError} = useQuery(`title-${slug}`, fecthAPI(slug),{
+        cacheTime: Infinity,
+        refetchOnWindowFocus: false,
+    })
 
     if(isLoading)
         return <Loader/>
+
+    if(isError)
+        navigate('/fectherror')
 
     return (
         <div className="product-header">
@@ -61,7 +78,13 @@ function ProductHeader({ slug, about }) {
                     }
                 </div>
 
-                <p>{content}</p>
+                {
+                    slug 
+                    &&
+                        <p>{data.content}</p>
+                    ||
+                        <p>{data}</p>
+                }
             
                 {
                     about 
