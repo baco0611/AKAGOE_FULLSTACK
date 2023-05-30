@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('contents', function (Blueprint $table) {
-            $table->increments('id_content');
+            $table->integer('id_content')->primary();
             $table->string('titleName_ENG', 500)->nullable();
             $table->text('contentDetails_ENG')->nullable();
             $table->text('contentOverall_ENG')->nullable();
@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('contentOverall_JPN')->nullable();
             $table->string('mainColor')->nullable();
             $table->text('imageLogo')->nullable();
+            $table->text('imageDetails')->nullable();
             $table->string('id_name');
         });
     }

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('others', function (Blueprint $table) {
-            $table->increments('id_other');
+            $table->integer('id_other')->primary();
             $table->string('name');
             $table->string('urlImage');
             $table->string('urlPage');

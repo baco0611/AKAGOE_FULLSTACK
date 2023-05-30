@@ -6,35 +6,41 @@ import Loader from "../../../views/Loader/Loader"
 import axios from "axios"
 import { HomeSectionContext } from '../../../context/HomeProvider'
 import ProductItem from './MainProductElement/ProductItem'
+import { useQuery } from 'react-query'
 
 function MainProduct() {
 
-    const [isLoading, setIsLoading] = useState(true)
-    const [gameList, setGameList] = useState([])
-    const navigate = useNavigate()
     const { setThemeColor } = useContext(HomeSectionContext)
+    const navigate = useNavigate()
     
-    useEffect(() => {
-        const fecthAPI = async (api) => {  
-            await axios.get(api)
+    const fecthAPI = () => {
+        const productApi = `http://localhost:3001/product`
+        return async () => {
+            const result = await axios.get(productApi) 
             .then(response => {
-                const apiData = response.data
-                    setGameList(apiData.data)
-                    setIsLoading(false)
+                    const restData = response.data
                     setThemeColor('#00506c')
+                    return restData.data
                 })
                 .catch(error => {
                     console.log(error)
-                    navigate('/fetcherror')
+                    navigate('/fectherror')
                 })
-        } 
 
-        const api = 'http://localhost:3001/product'
-        fecthAPI(api)
-    }, [])
-
+            return result
+        }
+    }
+    
+    const { data , isLoading, isError} = useQuery(`product`, fecthAPI,{
+        cacheTime: Infinity,
+        refetchOnWindowFocus: false,
+    })
+    
     if(isLoading)
         return <Loader/>
+
+    if(isError)
+        navigate('/fectherror')
 
     return (
         <div>
@@ -42,7 +48,7 @@ function MainProduct() {
             <div id="product-main">
                 <div className='wraper'>
                     {
-                        gameList.map((data, index) => <ProductItem key={index} data={data} index={index}/>)
+                       data.map((slug, index) => <ProductItem key={index} slug={slug} index={index}/>)
                     }
                 </div>
             </div>

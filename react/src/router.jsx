@@ -17,11 +17,7 @@ const router = createBrowserRouter([
             element: <HomeLayout/> ,
             children: [
                 {
-                    path:'/',
-                    element: <Navigate to={'/home'}/>
-                },
-                {
-                    path:'/home',
+                    path: '/',
                     element: <Home/>
                 },
                 {
@@ -81,7 +77,7 @@ const router = createBrowserRouter([
             element: <SignUp/>
         },
         {
-            path: '/fetchError',
+            path: '/fetchError/:slug',
             element: <NotFound/>
         },
         {

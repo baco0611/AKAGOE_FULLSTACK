@@ -12,8 +12,18 @@ class ContentResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
+    public function convertImage()
+    {
+        $name = $this->imageDetails;
+        $pathFull = '/uploads/uploads_' .$this->id_name. '/'. $name;
+        return 'http://localhost:8000' . '/storage' . $pathFull;
+    }
     public function toArray($request)
     {
-        return  $this->id_name;
+        return [
+            'name'=> $this->titleName_ENG,
+            'content'=> $this->contentOverall_ENG,
+            'image'=> $this->convertImage()
+        ];
     }
 }

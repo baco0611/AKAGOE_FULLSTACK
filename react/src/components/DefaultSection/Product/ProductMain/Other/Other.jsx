@@ -1,38 +1,41 @@
-import { useEffect, useState } from 'react'
-// import { navigate } from 'react-router-dom'
 import Loader from '../../../../../views/Loader/Loader'
 import './Other.scss'
 import axios from 'axios'
 import OtherItem from './OtherItem'
 import { useNavigate } from 'react-router-dom'
+import { useQuery } from 'react-query'
 
 function Other({ slug, language }) {
 
-    const [otherData, setOtherData] = useState()
-    const [isLoading, setIsLoading] = useState(true)
     var navigate = useNavigate()
 
-    useEffect(() => {
-        const fecthAPI = async (api) => {  
-            await axios.get(api)
+    const fecthAPI = (slug) => {
+        const otherApi = `http://localhost:3001/other-${slug}`
+        return async () => {
+            const result = await axios.get(otherApi) 
                 .then(response => {
-                    const apiData = response.data
-                    setOtherData(apiData.data)
-                    setIsLoading(false)
+                    const restData = response.data
+                    return restData.data
                 })
                 .catch(error => {
                     console.log(error)
-                    navigate('/fetcherror')
+                    navigate('/fectherror')
                 })
-        } 
-        
-        setIsLoading(true)
-        const reviewApi = `http://localhost:3001/other-${slug}`
-        fecthAPI(reviewApi)
-    }, [slug])
+
+            return result
+        }
+    }
+
+    const { data , isLoading, isError} = useQuery(`other-${slug}`, fecthAPI(slug),{
+        cacheTime: Infinity,
+        refetchOnWindowFocus: false,
+    })
 
     if(isLoading)
         return <Loader/>
+
+    if(isError)
+        navigate('/fectherror')
 
     return (
         <div id="other-section">
@@ -40,7 +43,7 @@ function Other({ slug, language }) {
                 <h1>Other</h1>
                 <div className='other-main'>
                     {
-                        otherData.map((data, index) => <OtherItem data={data} key={index}/>)
+                        data.map((data, index) => <OtherItem data={data} key={index}/>)
                     }
                 </div>
             </div>
