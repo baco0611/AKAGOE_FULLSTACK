@@ -15,8 +15,15 @@ class CharacterResource extends JsonResource
     public function convertImage()
     {
         $name = $this->image_link;
+        if ($this->image_type == '2D') 
+        {
         $pathFull = '/uploads/uploads_' .$this->id_name. '/'. $name;
         return 'http://localhost:8000' . '/storage' . $pathFull;
+        }
+        if ($this->image_type == '3D') 
+        {
+            return $name;
+        }
     }
     public function toArray($request)
     {
