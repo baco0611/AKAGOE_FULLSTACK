@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('explores', function (Blueprint $table) {
-            $table->increments('id_explore');
+            $table->integer('id_explore')->primary();
             $table->longtext('contentExplore_ENG')->nullable();
             $table->longtext('contentExplore_VIE')->nullable();
             $table->longtext('contentExplore_JPN')->nullable();

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('feedback', function (Blueprint $table) {
-           $table->increments('id_feedback');
+           $table->integer('id_feedback')->primary();
            $table->string('fullname', 255);
            $table->string('email', 255);
            $table->string('phone');
