@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CharacterResource;
 use App\Models\Character;
+use App\Service\CharacterService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 
@@ -39,7 +40,8 @@ class CharacterController extends Controller
      */
     public function show($id_name)
     {
-        $character= Character::where('id_name', $id_name)->get();
+        $characterservice = new CharacterService;
+        $character= $characterservice->get($id_name);
         $characterResource = CharacterResource::collection($character);
         return response()->json([
             'data'=>  $characterResource
