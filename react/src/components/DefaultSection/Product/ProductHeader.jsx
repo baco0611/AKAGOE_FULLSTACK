@@ -1,29 +1,31 @@
-import { useEffect, useState } from 'react'
 import './ProductHeader.scss'
 import Loader from '../../../views/Loader/Loader'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useQuery } from 'react-query'
+import { useContext } from 'react'
+import { UserContext } from '../../../context/ContextProvider'
 
 function ProductHeader({ slug, about }) {
 
     const navigate = useNavigate()
+    const { apiURL } = useContext(UserContext); 
 
     const fecthAPI = (slug) => {
         if(slug) {
-            const titleApi = `http://localhost:3001/title-${slug}`
+            const titleApi = `${apiURL}/title/${slug}`
             return async () => {
                 const result = await axios.get(titleApi) 
-                .then(response => {
-                    const restData = response.data
-                    return restData.data
-                })
-                .catch(error => {
-                    console.log(error)
-                    navigate('/fectherror')
-                })
+                    .then(response => {
+                        const restData = response.data
+                        return restData.data[0]
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        navigate('/fectherror')
+                    })
 
-            return result
+                return result
             }
         }
         else {
