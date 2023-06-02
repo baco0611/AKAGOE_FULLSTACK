@@ -150,10 +150,20 @@ Validator.isPassword = (selector, message) => {
     return {
         selector,
         test(value) {
-            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$/
+            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-+_!@#$%^&*.,?]).+$/
             return regex.test(value)
             ? undefined
             : message || 'Hãy nhập mật khẩu có ít nhất 1 ký tự in hoa, 1 ký tự đặc biệt và 1 số'
+        }
+    }
+}
+
+Validator.isConfirm = (selector, rawSelector,message) => {
+    return {
+        selector,
+        test(value) {
+            const rawValue = $(rawSelector).value
+            return value === rawValue ? undefined : message || 'Hãy nhập lại đúng mật khẩu'
         }
     }
 }

@@ -37,9 +37,6 @@ function Login() {
                 Validator.minLength('#user-password', 8, 'Password must be at least 8 characters'),
                 Validator.isPassword('#user-password', 'Please enter a password with at least 1 uppercase character, 1 special character and 1 number')
             ],
-            onSubmit(data) {
-                console.log(data)
-            },
             setIsSubmit
         });
     }, [formData])
@@ -58,14 +55,17 @@ function Login() {
     const handleSubmit = e => {
         e.preventDefault();
 
-        console.log(formData)
+        const payload = formData
+        console.log(payload)
     }
 
     return (
         <div id="login-section" className="login">
             <div className="login-form">
                 <form id="user-login-form" onSubmit={handleSubmit}>
-                    <h1>Nice to see you again!</h1>
+                    <div className="user-header">
+                        <h1>Nice to see you again!</h1>
+                    </div>
                     <div className="login-main">
                         <div className="form-group">
                             <label htmlFor="user-email">Email</label>
