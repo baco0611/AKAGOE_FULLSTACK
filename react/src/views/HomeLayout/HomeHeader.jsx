@@ -11,7 +11,6 @@ function HomeLayout() {
     const {user, token} = useContext(UserContext)
     const {themeColor} = useContext(HomeSectionContext)
     const [activeMenu, setActiveMenu] = useState(false)
-    const menuRef = useRef()
 
     const handelActiveMenu = () => {
         setActiveMenu(!activeMenu)
@@ -87,7 +86,6 @@ function HomeLayout() {
             </header>
 
             <nav 
-                ref={menuRef} 
                 className={clsx({
                     "active": activeMenu
                 })}

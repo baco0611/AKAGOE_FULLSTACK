@@ -8,6 +8,7 @@ import { Product, MainProduct } from './components/DefaultSection/Product'
 import Category from './components/ShopSection/Category/Category'
 import Cart from './components/ShopSection/Cart/Cart'
 import { Login, NotFound, SignUp } from './components/UserSection'
+import UserLayout from './views/UserLayout/UserLayout'
 
 const defaultLanguage = localStorage.getItem("DEFAULT_LANGUAGE")
 
@@ -36,13 +37,7 @@ const router = createBrowserRouter([
                 },
                 {
                     path:'/product/:slug',
-                    element: <Product/>, 
-                    children: [
-                        {
-                            path:'/product/:slug',
-                            element: <Product/> 
-                        }
-                    ]
+                    element: <Product/>
                 }
             ]
         },
@@ -69,12 +64,22 @@ const router = createBrowserRouter([
             ]
         },
         {
-            path: '/login',
-            element: <Login/>
-        },
-        {
-            path: '/signup',
-            element: <SignUp/>
+            path: '/',
+            element: <UserLayout/>,
+            children: [
+                {
+                    path: '/login/:slug',
+                    element: <Login/>
+                },
+                {
+                    path: '/login',
+                    element: <Login/>
+                },
+                {
+                    path: '/signup',
+                    element: <SignUp/>
+                },
+            ]
         },
         {
             path: '/fetchError/:slug',

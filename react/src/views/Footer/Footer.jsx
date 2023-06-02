@@ -1,13 +1,28 @@
 import { Link } from 'react-router-dom'
 import './Footer.scss'
+import { useContext, useEffect, useState } from 'react'
+import { AdministratorSectionContext } from '../../context/AdministratorProvider'
 
 function Footer({ theme }) {
+
+    const [adminTheme, setAdminTheme] = useState('')
+    const context = useContext(AdministratorSectionContext)
+
+    useEffect(() => {
+        if(context) {
+            const { adminTheme } = context
+            setAdminTheme(adminTheme)
+        }
+    })
+    
     return (
         <footer 
             style={
                 theme === 'default' && 
                 {background: '#C7E5EC'} ||
-                {background: '#F0D1E0'}
+                    adminTheme === "admin" &&
+                        {background: '#e1d1f0'} ||
+                        {background: '#F0D1E0'}
             }
         >
             <div className="footer-main">
