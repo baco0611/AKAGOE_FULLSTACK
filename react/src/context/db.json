@@ -1,5 +1,26 @@
 {
-    
+    "best-seller": {
+        "data": [
+            {
+                "productName": "Iphone 14 Promax",
+                "company": "Apple",
+                "price": 1150.25,
+                "image": "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-14-pro-model-unselect-gallery-2-202209?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1660753617559"
+            },
+            {
+                "productName": "Bose Headphone",
+                "company": "Bose",
+                "price": 265.99,
+                "image": "https://cdn.vox-cdn.com/uploads/chorus_asset/file/22888326/cwelch_202109_4775_5603.jpg"
+            },
+            {
+                "productName": "Macbook Pro",
+                "company": "Apple",
+                "price": 2200,
+                "image": "https://www.suckhoedothi.com/wp-content/uploads/2023/02/csm_AKA8518_984be0479c.jpg"
+            }
+        ]
+    },
     "product": {
         "data": [
             "akagoe",

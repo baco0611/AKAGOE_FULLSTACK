@@ -59,7 +59,8 @@ function Footer({ theme }) {
                     </div>
                 </div>
             </div>
-            <p>&copy; Akagoe team - Bao Huynh Van Nguyen - Nguyen Thi Van Anh</p>
+            <p>Copyright &copy; Akagoe team - Bao Huynh Van Nguyen - Nguyen Thi Van Anh</p>
+            <p style={{fontSize: '12px'}}>Design by Doan Thuc Quyen</p>
         </footer>
     )
 }

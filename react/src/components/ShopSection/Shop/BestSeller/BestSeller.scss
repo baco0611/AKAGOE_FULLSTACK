@@ -1,0 +1,87 @@
+.shop-best-seller {
+    padding: 32px 30px 100px 30px;
+    display: flex;
+    min-height: 40vh;
+
+    .introduce {
+        width: 30%;
+        height: 100%;
+
+        h1 {
+            font-size: 34px;
+            font-weight: 900;
+            line-height: 48px;
+        } 
+
+        p {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 27px;
+            color: #1e1e1e86;
+            width: 75%;
+        }
+    }
+
+    .item-list {
+        width: 70%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: calc(100% / 3 - 7.5px) calc(100% / 3 - 7.5px) calc(100% / 3 - 7.5px);
+        column-gap: 15px;
+
+        .best-item {
+            width: 100%;
+            aspect-ratio: 280/375;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            img {
+                border-radius: 5px;
+                aspect-ratio: 5/4.5;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .item-content {
+                h1, h2, h3 {
+                    text-align: justify;
+                    color: black;
+                }
+
+                h1 {
+                    font-weight: 600;
+                    font-size: 22px;
+                    height: 44px;
+                    display: inline-block;
+                }
+
+                h3 {
+                    font-weight: 500;
+                    font-size: 14px;   
+                    padding-top: 5px;
+                    padding-bottom: 15px;
+                }
+
+                h2 {
+                    font-weight: 500;
+                    font-size: 20px;
+                }
+            }
+
+            &:nth-child(1) {
+                background: #C1D3E5;
+            }
+
+            &:nth-child(2) {
+                background: #E2BDBF;
+            }
+
+            &:nth-child(3) {
+                background: #FFE8B2;
+            }
+        }
+    }
+}

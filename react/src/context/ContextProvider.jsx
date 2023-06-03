@@ -1,6 +1,14 @@
 import { createContext, useEffect, useState } from "react";
 
-const UserContext = createContext()
+const UserContext = createContext({
+    user: null,
+    token: null,
+    defaultLanguage: null,
+    setUser: () => {},
+    setToken:() => {},
+    setDefaultLanguage: () => {},
+    apiURL: null
+})
 
 function StateContext({ children }) {
 
