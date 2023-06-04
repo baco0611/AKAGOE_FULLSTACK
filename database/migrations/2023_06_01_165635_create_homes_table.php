@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('homes', function (Blueprint $table) {
-            $table->integer('id_home')->primary();
+            $table->id('id_home');
             $table->longText('mission');
             $table->longText('vision');
             $table->longText('kondo');
