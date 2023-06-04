@@ -1,0 +1,69 @@
+@import '../../../variable.scss';
+
+.search-item {
+    width: 100%;
+    padding-top: 50px;
+
+    & img {
+        aspect-ratio: 2/3;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &-content {
+        h1 {
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 26px;
+            height: 26px;
+            margin-top: 16px;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 1;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: black;
+        }
+
+        h4 {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 24px;
+            color: black;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 26px;
+            color: $shop-text-color;
+        }
+
+        h3 {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 24px;
+            color: black;
+        }
+    }
+
+    &:hover {
+        transform: scale(1.1) translate3d(0, 0, 4px);
+
+        img {
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5),
+               -2px -2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        h1, h3, h4 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+               -2px -2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        h2 {
+            text-shadow: 2px 2px 9px rgba(0, 0, 0, 0.3),
+               -2px -2px 9px rgba(255, 255, 255, 0.3);
+        }
+    }
+}

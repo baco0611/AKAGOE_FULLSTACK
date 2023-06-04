@@ -1,7 +1,7 @@
 import './MainProduct.scss'
 import { useNavigate}  from "react-router-dom"
 import ProductHeader from "./ProductHeader"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import Loader from "../../../views/Loader/Loader"
 import axios from "axios"
 import { HomeSectionContext } from '../../../context/HomeProvider'
@@ -21,7 +21,7 @@ function MainProduct() {
             const result = await axios.get(productApi) 
             .then(response => {
                     const restData = response.data
-                    setThemeColor('#00506c')
+                    
                     return restData.product
                 })
                 .catch(error => {
@@ -31,6 +31,8 @@ function MainProduct() {
             return result
         }
     }
+
+    useEffect(() => setThemeColor('#00506c'), [])
     
     const { data , isLoading, isError} = useQuery(`product`, fecthAPI(),{
         cacheTime: Infinity,

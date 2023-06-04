@@ -9,7 +9,7 @@ function ShopHeader() {
 
     const {user, token} = useContext(UserContext)
     const [activeMenu, setActiveMenu] = useState(false)
-    const { numberOfCart, searchValue, setSearchValue, searchProduct } = useContext(ShopSectionContext)
+    const { numberOfCart, searchValue, setSearchValue, searchProduct, handleEnterAction } = useContext(ShopSectionContext)
     const searchRef = useRef()
 
     const handelActiveMenu = () => {
@@ -36,6 +36,8 @@ function ShopHeader() {
                             placeholder='What are you looking for ...' 
                             value={searchValue}
                             onChange={e => setSearchValue(e.target.value)}
+                            autoComplete='off'
+                            onKeyDown={handleEnterAction}
                         />
                         <i 
                             className='ti-search'

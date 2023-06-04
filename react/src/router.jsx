@@ -9,8 +9,8 @@ import Category from './components/ShopSection/Category/Category'
 import Cart from './components/ShopSection/Cart/Cart'
 import { Login, NotFound, SignUp } from './components/UserSection'
 import UserLayout from './views/UserLayout/UserLayout'
-
-const defaultLanguage = localStorage.getItem("DEFAULT_LANGUAGE")
+import Search from './components/ShopSection/Search/Search'
+import ShopProduct from './components/ShopSection/ShopProduct/ShopProduct'
 
 const router = createBrowserRouter([
         {
@@ -23,13 +23,7 @@ const router = createBrowserRouter([
                 },
                 {
                     path:'/about',
-                    element: <About/>,
-                    children: [
-                        {
-                            path: '/about',
-                            element: <About/>
-                        }
-                    ]
+                    element: <About/>
                 }, 
                 {
                     path:'/product',
@@ -60,6 +54,14 @@ const router = createBrowserRouter([
                 {
                     path:'/shop/cart',
                     element: <Cart/>
+                }, 
+                {
+                    path: '/shop/search',
+                    element: <Search/>
+                }, 
+                {
+                    path: '/shop/item/:id',
+                    element: <ShopProduct/>
                 }
             ]
         },

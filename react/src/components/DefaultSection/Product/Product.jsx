@@ -11,9 +11,7 @@ function Product() {
     var defaultLanguage = localStorage.getItem('DEFAULT_LANGUAGE')
     const { setThemeColor } = useContext(HomeSectionContext)
     
-    useEffect(() => {
-        setThemeColor('#00506c')
-    },)
+    useEffect(() => setThemeColor('#00506c'), [])
 
     return (
         <div id="product-section">

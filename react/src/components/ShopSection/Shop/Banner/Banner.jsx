@@ -3,7 +3,7 @@ import './Banner.scss'
 import { ShopSectionContext } from '../../../../context/ShopProvider'
 
 function Banner() {
-    const { searchValue, setSearchValue, searchProduct } = useContext(ShopSectionContext)
+    const { searchValue, setSearchValue, searchProduct, handleEnterAction } = useContext(ShopSectionContext)
     const searchRef = useRef()
 
     return (
@@ -21,6 +21,8 @@ function Banner() {
                         placeholder='What are you looking for ...' 
                         value={searchValue}
                         onChange={e => setSearchValue(e.target.value)}
+                        autoComplete='off'
+                        onKeyDown={handleEnterAction}
                     />
                     <i 
                         className='ti-search'
