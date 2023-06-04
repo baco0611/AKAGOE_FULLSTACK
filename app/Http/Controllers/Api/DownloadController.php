@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\CharacterResource;
-use App\Models\Character;
-use App\Service\CharacterService;
+use App\Http\Resources\DownloadResource;
+use App\Service\DownloadService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 
-class CharacterController extends Controller
+class DownloadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -40,11 +39,11 @@ class CharacterController extends Controller
      */
     public function show($id_name)
     {
-        $characterservice = new CharacterService;
-        $character= $characterservice->get($id_name);
-        $characterResource = CharacterResource::collection($character);
+        $downloadservice = new DownloadService();
+        $download = $downloadservice->get($id_name);
+        $downloadResource = DownloadResource::collection($download);
         return response()->json([
-            'data'=>  $characterResource
+            'data'=> $downloadResource
         ], HttpResponse::HTTP_OK);
     }
 

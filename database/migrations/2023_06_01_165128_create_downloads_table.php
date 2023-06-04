@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+        Schema::create('downloads', function (Blueprint $table) {
+            $table->id('id_download');
+            $table->string('laptopURL')->nullable();
+            $table->string('appStoreURL')->nullable();
+            $table->string('ggPlayURL')->nullable();
+            $table->string('id_name');
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('download');
     }
 };

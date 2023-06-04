@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CharacterController;
 use App\Http\Controllers\Api\Contentcontroller;
+use App\Http\Controllers\Api\DownloadController;
 use App\Http\Controllers\Api\ExploreController;
 use App\Http\Controllers\Api\OtherController;
 use App\Http\Controllers\Api\ReviewController;
@@ -43,3 +44,6 @@ Route::get('other/{id_name}', [OtherController::class,'show'])->name('other.show
 
 #review
 Route::get('review/{id_name}', [ReviewController::class,'show'])->name('review.show');
+
+#review
+Route::get('download/{id_name}', [DownloadController::class,'show'])->name('download.show');
