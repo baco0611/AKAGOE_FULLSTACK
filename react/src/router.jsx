@@ -51,7 +51,7 @@ const router = createBrowserRouter([
                 },
                 {
                     path:'/shop/category',
-                    element: <Navigate to={'/shop/category/all'}/>
+                    element: <Category/>
                 },
                 {
                     path:'/shop/category/:slug',

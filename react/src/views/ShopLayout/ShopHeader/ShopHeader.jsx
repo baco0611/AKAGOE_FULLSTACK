@@ -90,7 +90,7 @@ function ShopHeader() {
                 <div className="navMain">
                     <ul>
                         <li>
-                            <h3><Link to={'/category'}>Category</Link></h3>
+                            <h3><Link to={'/shop/category'}>Category</Link></h3>
                             <dl>
                                 <dd>
                                     <Link to={'/shop/category/beauty'}>Beauty</Link>

@@ -41,8 +41,6 @@ function BestSeller() {
     if(isError)
         navigate('/fectherror')
 
-    console.log(data)
-
     return (
         <section className='wraper shop-best-seller'>
             <div className='introduce'>

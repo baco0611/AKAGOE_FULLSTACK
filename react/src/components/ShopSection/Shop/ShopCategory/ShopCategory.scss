@@ -1,0 +1,130 @@
+.shop-category {
+    padding-top: 50px;
+    padding: 50px 38px;
+
+    &-header {
+        padding-bottom: 100px;
+
+        h1, p {
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 36px;
+            line-height: 48px;
+        }
+
+        p {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 27px;
+            color: #1E1E1E80;
+        }
+    }
+
+    &-main {
+        width: 100%;
+        min-height: 70vh;
+        border-radius: 5px;
+        background-color: #F0D1E0;
+        padding-bottom: 75px;
+    }
+
+    &-img {
+        width: 100%;
+        display: flex;
+        gap: 5%;
+        justify-content: center;
+        padding-top: 75px;
+    }
+
+    &-item {
+        width: 22.5vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            aspect-ratio: 0.6875/1;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 15px;
+            &:hover {
+                transform: scale(1.07) translate3d(0, 0, 5px);
+            }
+        }
+
+        h1 {
+            display: inline-block;
+            font-weight: 700;
+            font-size: 36px;
+            line-height: 54px;
+            color: black;
+            text-align: center;
+            margin-top: 20px;
+            &:hover {
+                color: #e671aa;
+            }
+        }
+
+        &:nth-child(2n-1){
+            transform: translateY(-22.5vh);
+        }
+    }
+
+    &-content {
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & p {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 27px;
+            text-align: center;
+            color: #1E1E1E80;
+        }
+
+        & button {
+            margin-top: 20px;
+            width: 150px;
+            height: 50px;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: black;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background: white;
+            position: relative;
+            transition: color .5s;
+            z-index: 2;
+            overflow: hidden;
+            
+            &:before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 0%;
+                background: #e671aa;
+                z-index: -1;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(45deg);
+                transition: all 0.4s cubic-bezier(0.24, 0.89, 0.68, -0.37)
+            }
+  
+            &:hover {
+                color: #fff;
+                &:before {
+                    height: 300%;
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+            }
+        }
+    }
+}

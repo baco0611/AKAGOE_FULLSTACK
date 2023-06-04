@@ -45,6 +45,10 @@
                 object-position: center;
             }
 
+            a:hover {
+                opacity: 0.8;
+            }
+
             .item-content {
                 h1, h2, h3 {
                     text-align: justify;
@@ -56,6 +60,10 @@
                     font-size: 22px;
                     height: 44px;
                     display: inline-block;
+
+                    &:hover {
+                        opacity: 0.7;
+                    }
                 }
 
                 h3 {
@@ -81,6 +89,10 @@
 
             &:nth-child(3) {
                 background: #FFE8B2;
+            }
+
+            &:hover {
+                transform: scale(1.05) translate3d(0, 0, 5px);
             }
         }
     }
