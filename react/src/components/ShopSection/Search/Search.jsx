@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import './Search.scss'
 import { UserContext } from '../../../context/ContextProvider';
 import { Link, useNavigate } from 'react-router-dom';
@@ -49,8 +49,6 @@ function Search() {
 
     if(isError)
         navigate('/fectherror')
-
-    // console.log(data[0])
 
     return (
         <div id='search-section'>
