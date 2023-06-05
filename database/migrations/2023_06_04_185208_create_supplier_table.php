@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('product_image', function (Blueprint $table) {
-            $table->id('id_image');
-            $table->string('url_image');
-            $table->foreignId('id_product');
-            $table->foreign('id_product')->references('id_product')->on('product');
+        Schema::create('supplier', function (Blueprint $table) {
+            $table->id('id_supplier');
+            $table->string('supplier_name')->nullable();
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_image');
+        Schema::dropIfExists('supplier');
     }
 };

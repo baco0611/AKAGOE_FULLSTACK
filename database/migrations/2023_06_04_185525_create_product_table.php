@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->integer('quantity');
             $table->integer('sale_quantity')->nullable();
-            $table->integer('price');
+            $table->double('price');
             $table->string('product_description')->nullable();
             $table->string('color')->nullable();
             $table->string('size')->nullable();
