@@ -1,0 +1,239 @@
+@import '../../../variable.scss';
+
+.shop-product-main {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+
+    & .shop-product {
+        &-nav {
+            width: 100%;
+            height: min(60vh, 480px, max(60vh, 350px));
+            background: $shop-color;
+
+            .wraper {
+                padding-top: 80px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                a {
+                    font-weight: 900;
+                    font-size: 24px;
+                    line-height: 30px;
+                    letter-spacing: 2px;
+                    color: black;
+
+                    &:hover {
+                        color: $shop-text-color;
+                    }
+                }
+
+                i {
+                    font-weight: 900;
+                    font-size: 20px;
+                    line-height: 30px;
+                }
+            }
+        }
+
+        &-containt {
+           display: flex;
+           align-items: flex-start;
+           gap: 150px; 
+
+        }
+        &-img, &-content {
+            width: calc(50% - 75px);
+        }
+
+        &-img {
+            position: relative;
+
+            img {
+                width: 100%;
+                aspect-ratio: 1/1;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 10px;
+            }
+
+            .magnify {
+                overflow: hidden;
+                position: relative;
+                width: 100%;
+                aspect-ratio: 1/1;
+
+                img {
+                    max-width: 100%;
+                    min-height: 100%;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    pointer-events: none;
+                }
+            }
+
+            & .image-nav {
+                padding-top: 20px;
+                display: flex;
+                width: 100%;
+                gap: 15px;
+                overflow-x: scroll;
+                padding-bottom: 5px;
+
+                img {
+                    width: 10vw;
+
+                    &.active {
+                        border: solid 2.5px $shop-color;
+                    }
+                }
+
+                &::-webkit-scrollbar {
+                    display: block !important;
+                    height: 5px !important;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: #ddd;
+
+                    &:hover {
+                        background: #aaa;
+                    }
+                }
+            }
+        }
+
+        &-content {
+            height: 100%;
+            .content-title {
+                margin-bottom: 15px;
+                h1 {
+                    font-weight: 700;
+                    font-size: 50px;
+                    line-height: 58px;
+                }
+
+                h3 {
+                    font-weight: 600;
+                    font-size: 28px;
+                    padding-top: 10px;
+                }
+
+                h2 {
+                    padding-top: 50px;
+                    font-weight: 900;
+                    font-size: 55px;
+                    line-height: 60px;
+                    color: $shop-text-color;
+                }
+            }
+
+            .content-main {
+                padding-top: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .content {
+                    h2 {
+                        padding-bottom: 15px;
+                        font-weight: 700;
+                        font-size: 24px;
+                    }
+
+                    p {
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 20px;
+                        text-align: justify;
+                        letter-spacing: 1px;
+                        height: 30vh;
+                        overflow-y: scroll;
+
+                        &::-webkit-scrollbar {
+                            display: block !important;
+                            width: 4px !important;
+                        }
+
+                        &::-webkit-scrollbar-thumb {
+                            background: #ddd;
+
+                            &:hover {
+                                background: #aaa;
+                            }
+                        }
+                    }
+                }
+
+                .sale {
+                    .quantity {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 10px 0;
+                        font-weight: 500;
+                        font-size: 20px;
+
+                        &-main {
+                            display: flex;
+                            gap: 10px;
+
+                            button {
+                                background: transparent;
+                                border: none;
+                                font-weight: 400;
+                                font-size: 20px;
+                            }
+
+                            input {
+                                text-align: center;
+                                width: max(5vw, 50px);
+                                border: none;
+                                font-size: 20px;
+                            }
+                        }
+                    }
+
+                    .total {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 10px 0;
+                        font-weight: 500;
+                        font-size: 20px;
+
+                        h2 {
+                            font-weight: 900;
+                            font-size: 26px;
+                            color: $shop-text-color;
+                        }
+                    }
+
+                    .submit-btn {
+                        width: 100%;
+                        height: 45px;
+                        color: white;
+                        background-color: $shop-color;
+                        border: none;
+                        font-size: 20px;
+                        margin-top: 15px;
+                        pointer-events: none;
+                        
+                        &.active {
+                            background-color: $shop-text-color;
+                            pointer-events: all;
+                        }
+
+                        &:hover {
+                            background-color: $shop-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

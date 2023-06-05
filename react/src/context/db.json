@@ -1,4 +1,92 @@
 {
+    "apple": {
+        "data": [
+            {
+                "productName": "Iphone 14 Promax",
+                "company": "Apple",
+                "category": "fashion",
+                "price": 1150.25,
+                "description": "Develop a website by finding a product identity that has value and branding to become a characteristic of a company. We will also facilitate the business marketing of these products with our SEO experts so that they become a ready-to-use website and help sell a product from the company.\nDevelop a website by finding a product identity that has value and branding to become a characteristic of a company. We will also facilitate the business marketing of these products with our SEO experts so that they become a ready-to-use website and help sell a product from the company.",
+                "itemLeft": 30,
+                "image": [
+                    "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-14-pro-model-unselect-gallery-2-202209?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1660753617559",
+                    "https://shopgarena.net/wp-content/uploads/2022/07/Hinh-game-Play-Together-VNG-moi-dep-nhat.jpg",
+                    "https://www.suckhoedothi.com/wp-content/uploads/2023/02/csm_AKA8518_984be0479c.jpg",
+                    "https://www.hd-tecnologia.com/imagenes/articulos/2019/08/Siguen-los-rumores-de-una-Nintendo-Switch-Pro.jpg",
+                    "https://cdn.shopify.com/s/files/1/0568/5916/4844/products/IMG_5840_1200x1200.png?v=1620837122"
+                ], 
+                "id": "apple"
+            }
+        ] 
+    },
+    "otherData-apple": {
+        "data": [
+            {
+                "productName": "LEGO",
+                 "company": "LEGO@",
+                 "price": 5,
+                "image": "https://tongkhothienan.com/wp-content/uploads/2022/07/do-choi-ap-ghep-xep-hinh-lego-19.jpg",
+                "id": "apple",
+                "sale": 500
+            },
+            {
+                "productName": "PS5",
+                 "company": "SONY",
+                 "price": 399.99,
+                "image": "https://s3.cloud.cmctelecom.vn/tinhte2/2020/09/5150856_Cover_PS5.jpg",
+                "id": "apple",
+                "sale": 500
+            },
+            {
+                "productName": "Nintendo Switch",
+                 "company": "Nintendo",
+                 "price": 299,
+                "image": "https://www.hd-tecnologia.com/imagenes/articulos/2019/08/Siguen-los-rumores-de-una-Nintendo-Switch-Pro.jpg",
+                "id": "apple",
+                "sale": 500
+            },
+            {
+                "productName": "ChomChom",
+                 "company": "Việt Nam",
+                 "price": 1,
+                "image": "https://redpineinternational.vn/wp-content/uploads/2021/08/Diem-ten-5-loai-phan-bon-duong-qua-chom-chom-day-cui-doc-hat.png",
+                "id": "apple",
+                "sale": 500
+            },
+            {
+                "productName": "Nike air force custom green",
+                 "company": "Nike",
+                 "price": 125,
+                "image": "https://cdn.shopify.com/s/files/1/0568/5916/4844/products/IMG_5840_1200x1200.png?v=1620837122",
+                "id": "apple",
+                "sale": 500
+            },
+            {
+                "productName": "Zoro figure",
+                 "company": "JapanFigures",
+                 "price": 59.99,
+                "image": "https://vn-live-01.slatic.net/p/a59cff434b9802f3e683760654f93023.png",
+                "id": "apple",
+                "sale": 500
+            },
+            {
+                "productName": "Luffy figure",
+                 "company": "JapanFigures",
+                 "price": 89.99,
+                "image": "https://cdn-amz.woka.io/images/I/61kvCWc7AOL.jpg",
+                "id": "apple",
+                "sale": 500
+            },
+            {
+                "productName": "Zhongli cosplay",
+                 "company": "UWOWO",
+                 "price": 10,
+                "image": "https://cdn.shopify.com/s/files/1/0598/9780/7027/products/Zhongli.jpg?v=1632366270",
+                "id": "apple",
+                "sale": 500
+            }
+        ]
+    },
     "best-seller": {
         "data": [
             {
@@ -6,21 +94,21 @@
                 "company": "Apple",
                 "price": 1150.25,
                 "image": "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-14-pro-model-unselect-gallery-2-202209?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1660753617559",
-                "id": ""
+                "id": "apple"
             },
             {
                 "productName": "Bose Headphone",
                 "company": "Bose",
                 "price": 265.99,
                 "image": "https://cdn.vox-cdn.com/uploads/chorus_asset/file/22888326/cwelch_202109_4775_5603.jpg",
-                "id": ""
+                "id": "apple"
             },
             {
                 "productName": "Macbook Pro",
                 "company": "Apple",
                 "price": 2200,
                 "image": "https://www.suckhoedothi.com/wp-content/uploads/2023/02/csm_AKA8518_984be0479c.jpg",
-                "id": ""
+                "id": "apple"
             }
         ]
     },

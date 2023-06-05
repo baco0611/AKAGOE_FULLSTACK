@@ -105,8 +105,8 @@
 
     &-main {
         display: grid;
-        grid-template-columns: calc(100% / 4 - 90px) calc(100% / 4 - 90px) calc(100% / 4 - 90px) calc(100% / 4 - 90px);
-        column-gap: calc((100% - (100% / 4 - 90px)*4)/3);
+        grid-template-columns: calc(100% / 4 - 75px) calc(100% / 4 - 75px) calc(100% / 4 - 75px) calc(100% / 4 - 75px);
+        column-gap: calc((100% - (100% / 4 - 75px)*4)/3);
         row-gap: 50px;
         padding-top: 20px;
     }

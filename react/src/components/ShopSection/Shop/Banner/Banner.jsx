@@ -14,7 +14,7 @@ function Banner() {
             <div className='rectangle-2'></div>
             <div className='rectangle-3'></div>
             <div className='search-bar'>
-                <div className='search-main'>
+                <div>
                     <input 
                         ref={searchRef}
                         name='search-bar' 
