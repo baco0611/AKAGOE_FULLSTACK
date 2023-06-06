@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('homes', function (Blueprint $table) {
-            $table->id('id_home');
-            $table->longText('mission');
-            $table->longText('vision');
-            $table->longText('kondo');
-            $table->string('id_language');
+        Schema::create('product_image', function (Blueprint $table) {
+            $table->id('id_image');
+            $table->string('url_image');
+            $table->boolean('istitle');
+            $table->foreignId('id_product');
+            $table->foreign('id_product')->references('id_product')->on('product');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('homes');
+        Schema::dropIfExists('product_image');
     }
 };

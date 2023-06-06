@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('downloads', function (Blueprint $table) {
-            $table->integer('id_download')->primary();
+            $table->id('id_download');
             $table->string('laptopURL')->nullable();
             $table->string('appStoreURL')->nullable();
             $table->string('ggPlayURL')->nullable();
-            $table->string('id_name')->nullable();
+            $table->string('id_name');
         });
     }
 

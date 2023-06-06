@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('others', function (Blueprint $table) {
-            $table->integer('id_other')->primary();
+            $table->id('id_other');
             $table->string('name');
             $table->string('urlImage');
-            $table->string('urlPage');
+            $table->string('urlPage')->nullable();
             $table->string('id_name');
         });
     }

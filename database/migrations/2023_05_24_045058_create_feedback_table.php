@@ -14,15 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('feedback', function (Blueprint $table) {
-           $table->integer('id_feedback')->primary();
+           $table->id('id_feedback');
            $table->string('fullname', 255);
            $table->string('email', 255);
            $table->string('phone');
            $table->longText('content_fb');
            $table->integer('star')->nullable();
-           $table->string('image_link');
+           $table->string('image_link')->nullable();
            $table->string('position');
-           $table->timestamp('time_fb');
+           $table->timestamps();
            $table->string('id_name');
         });
     }

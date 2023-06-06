@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('characters', function (Blueprint $table) {
-            $table->integer('id_character')->primary();
+            $table->id('id_character');
             $table->longtext('description_ENG')->nullable();
             $table->longtext('description_VIE')->nullable();
             $table->longtext('description_JPN')->nullable();

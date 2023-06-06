@@ -4,7 +4,9 @@ use App\Http\Controllers\Api\CharacterController;
 use App\Http\Controllers\Api\Contentcontroller;
 use App\Http\Controllers\Api\DownloadController;
 use App\Http\Controllers\Api\ExploreController;
+use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\OtherController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 #product
-Route::get('product', [ContentController::class,'index'])->name('product.index');
+Route::get('product', [ContentController::class,'index'])->name('content.index');
 
 #title
 Route::get('title/{id_name}', [ContentController::class,'showTitle'])->name('title.show');
@@ -47,3 +49,9 @@ Route::get('review/{id_name}', [ReviewController::class,'show'])->name('review.s
 
 #review
 Route::get('download/{id_name}', [DownloadController::class,'show'])->name('download.show');
+
+#home
+Route::get('home/{id_language}', [HomeController::class,'show'])->name('home.show');
+
+#bestSeller
+Route::get('bestSeller', [ProductController::class,'index'])->name('products.index');
