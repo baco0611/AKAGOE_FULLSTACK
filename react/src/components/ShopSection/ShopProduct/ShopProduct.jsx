@@ -16,13 +16,13 @@ function ShopProduct() {
     const navigate = useNavigate()
 
     const fecthAPI = (id) => {
-        const shopProductApi = `http://localhost:3001/${id}`
-        // const searchApi = `${apiURL}/introduce/${slug}`
+        // const shopProductApi = `http://localhost:3001/${id}`
+        const shopProductApi = `${apiURL}/item/${id}`
         return async () => {
             const result = await axios.get(shopProductApi) 
                 .then(response => {
                     const restData = response.data
-                    return restData.data[0]
+                    return restData
                 })
                 .catch(error => {
                     console.log(error)
@@ -43,13 +43,12 @@ function ShopProduct() {
     if(isError)
         navigate('/fectherror')
 
-    console.log(data)
-
     function capitalizeFirstLetter(str) {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     }
 
-    const categoryName = data.category
+    console.log(data)
+    const categoryName = data.data[0].category
 
     return(
         <div id="shop-product-section">
@@ -61,8 +60,8 @@ function ShopProduct() {
                         <Link to={`/shop/category/${categoryName.toLowerCase()}`}>{capitalizeFirstLetter(categoryName)}</Link>
                     </div>
                 </div>
-                <ShopProductContaint data={data}/>
-                <ShopRecommend id={data.id}/>
+                <ShopProductContaint data={data.data[0]}/>
+                <ShopRecommend data={data.otherData}/>
             </div>
         </div>
     )

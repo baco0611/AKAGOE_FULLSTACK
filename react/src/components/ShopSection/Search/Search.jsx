@@ -36,10 +36,37 @@ function Search() {
         }
     }
 
-    if(sortType === null || sortType === undefined)
-        sortType = 'new'
+    const axiosAPI = (value, sortType) => {
+        const searchApi = `${apiURL}/find`
 
-    const { data , isLoading, isError} = useQuery(`search-${value}-${sortType}`, fecthAPI(value, sortType),{
+        const payloadData = new FormData()
+
+        payloadData.append('category', value)
+        payloadData.append('method', sortType)
+        return async () => {
+            const result = await axios.post(searchApi, payloadData) 
+                .then(response => {
+                    const restData = response.data
+                    return restData.data
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error)
+                    navigate('/fectherror')
+                })
+            return result
+        }
+    }
+
+    if(sortType === null || sortType === undefined)
+        sortType = 'popular'
+
+    // const { data , isLoading, isError} = useQuery(`search-${value}-${sortType}`, fecthAPI(value, sortType),{
+    //     cacheTime: Infinity,
+    //     refetchOnWindowFocus: false,
+    // })
+
+    const { data , isLoading, isError} = useQuery(`search-${value}-${sortType}`, axiosAPI(value, sortType),{
         cacheTime: Infinity,
         refetchOnWindowFocus: false,
     })
@@ -55,14 +82,14 @@ function Search() {
             <div className='search-header wraper'>
                 <div className='search-title'>
                     <h1>{value}</h1>
-                    <i className='ti-line-double'></i>
-                    <h2>{`${50} items`}</h2>
+                    {/* <i className='ti-line-double'></i>
+                    <h2>{`${50} items`}</h2> */}
                 </div>
                 <div className='search-sort'>
                     <ul className={clsx({
                         active: active
                     })}>
-                        <li onClick={() => setActive(false)}><Link to={`/shop/search?value=${value}&sortType=new`}>New</Link></li>
+                        {/* <li onClick={() => setActive(false)}><Link to={`/shop/search?value=${value}&sortType=new`}>New</Link></li> */}
                         <li onClick={() => setActive(false)}><Link to={`/shop/search?value=${value}&sortType=popular`}>Popular</Link></li>
                         <li onClick={() => setActive(false)}><Link to={`/shop/search?value=${value}&sortType=priceAsc`}>Price-Asc</Link></li>
                         <li onClick={() => setActive(false)}><Link to={`/shop/search?value=${value}&sortType=priceDesc`}>Price-Desc</Link></li>

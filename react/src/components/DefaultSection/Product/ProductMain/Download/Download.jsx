@@ -11,7 +11,7 @@ function Download({ slug, language }) {
     const navigate = useNavigate()
 
     const fecthAPI = (slug) => {
-        const downloadApi = `http://localhost:3001/download-${slug}`
+        const downloadApi = `http://localhost:3001/download`
         return async () => {
             const result = await axios.get(downloadApi) 
                 .then(response => {

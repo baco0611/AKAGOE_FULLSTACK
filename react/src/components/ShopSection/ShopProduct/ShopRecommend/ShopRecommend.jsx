@@ -6,37 +6,39 @@ import Loader from "../../../../views/Loader/Loader";
 import { useQuery } from "react-query";
 import ShopItem from "../../ShopItem/ShopItem";
 
-function ShopRecommend({ id }) {
-    const { apiURL } = useContext(UserContext); 
-    const navigate = useNavigate()
+function ShopRecommend({ data }) {
+    // const { apiURL } = useContext(UserContext); 
+    // const navigate = useNavigate()
 
-    const fecthAPI = (id) => {
-        const recommendApi = `http://localhost:3001/otherData-${id}`
-        // const searchApi = `${apiURL}/introduce/${slug}`
-        return async () => {
-            const result = await axios.get(recommendApi) 
-                .then(response => {
-                    const restData = response.data
-                    return restData.data
-                })
-                .catch(error => {
-                    console.log(error)
-                    navigate('/fectherror')
-                })
-            return result
-        }
-    }
+    // const fecthAPI = (id) => {
+    //     const recommendApi = `http://localhost:3001/otherData-${id}`
+    //     // const searchApi = `${apiURL}/introduce/${slug}`
+    //     return async () => {
+    //         const result = await axios.get(recommendApi) 
+    //             .then(response => {
+    //                 const restData = response.data
+    //                 return restData.data
+    //             })
+    //             .catch(error => {
+    //                 console.log(error)
+    //                 navigate('/fectherror')
+    //             })
+    //         return result
+    //     }
+    // }
 
-    const { data , isLoading, isError} = useQuery(`recommend-${id}`, fecthAPI(id),{
-        cacheTime: Infinity,
-        refetchOnWindowFocus: false,
-    })
+    // const { data , isLoading, isError} = useQuery(`recommend-${id}`, fecthAPI(id),{
+    //     cacheTime: Infinity,
+    //     refetchOnWindowFocus: false,
+    // })
 
-    if(isLoading)
-        return <Loader/>
+    // if(isLoading)
+    //     return <Loader/>
 
-    if(isError)
-        navigate('/fectherror')
+    // if(isError)
+    //     navigate('/fectherror')
+
+    // console.log(data)
 
     console.log(data)
 

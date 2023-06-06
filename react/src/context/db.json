@@ -987,7 +987,7 @@
             }
         ]
     },
-    "download-akagoe": {
+    "download": {
         "data": {
             "laptopURL": "",
             "appStoreURL": "",
