@@ -15,25 +15,20 @@ class ProductsResource extends JsonResource
      */
     public function convertImage()
         {
-            if ($this->istitle) {
-                $image=$this->url_image;
-            }
-            $pathFull = '/uploads/product/'. $image;
+            $image=$this->url_image;
+            $type=$this->product_type_name;
+            $pathFull = '/uploads/product_'. $type .'/'. $image;
             return 'http://localhost:8000' . '/storage' . $pathFull;
         }
     public function toArray($request)
     {
         return [
             'productName'=>$this->product_name,
-            'company'=>$this->supplier->supplier_name,
-            'price' =>$this->price,
-            //'image'=> $this->convertImage(),
+            'company'=>$this->supplier_name,
+            'price' =>Round($this->price, 2),
+            'image'=> $this->convertImage(),
             'sale'=>$this->sale_quantity,
-            'id'=>Hash::make($this->id_product),
+            'id'=>$this->id
         ];
     }
-    // public function toArray($request)
-    // {
-    //     return parent::toArray($request);
-    // }
 }

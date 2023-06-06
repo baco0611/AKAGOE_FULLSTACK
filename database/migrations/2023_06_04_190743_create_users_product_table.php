@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id('id_users_product');
             $table->integer('quantity_buy');
             $table->foreignId('id_users');
-            $table->foreign('id_users')->references('id_users')->on('users');
+            $table->foreign('id_users')->references('id')->on('users');
             $table->foreignId('id_product');
-            $table->foreign('id_product')->references('id_product')->on('product');
+            $table->foreign('id_product')->references('id')->on('product');
         });
     }
 
