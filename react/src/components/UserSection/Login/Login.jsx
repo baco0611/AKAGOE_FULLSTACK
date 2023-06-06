@@ -109,7 +109,7 @@ function Login() {
                     </button>
                 </form>
             </div>
-            <div type="submit" className="login-side"></div>
+            <div className="login-side"></div>
         </div>
     )
 }

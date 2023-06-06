@@ -6,11 +6,12 @@ import ShopLayout from './views/ShopLayout/ShopLayout'
 import Shop from './components/ShopSection/Shop/Shop'
 import { Product, MainProduct } from './components/DefaultSection/Product'
 import Category from './components/ShopSection/Category/Category'
-import Cart from './components/ShopSection/Cart/Cart'
+import Cart from './components/Cart/Cart'
 import { Login, NotFound, SignUp } from './components/UserSection'
 import UserLayout from './views/UserLayout/UserLayout'
 import Search from './components/ShopSection/Search/Search'
 import ShopProduct from './components/ShopSection/ShopProduct/ShopProduct'
+import Apply from './components/DefaultSection/Apply/Apply'
 
 const router = createBrowserRouter([
         {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
                 {
                     path:'/product/:slug',
                     element: <Product/>
+                },
+                {
+                    path: '/apply',
+                    element: <Apply/>
                 }
             ]
         },
@@ -52,7 +57,7 @@ const router = createBrowserRouter([
                     element: <Category/>
                 },
                 {
-                    path:'/shop/cart',
+                    path:'/shop/cart/:slug',
                     element: <Cart/>
                 }, 
                 {
