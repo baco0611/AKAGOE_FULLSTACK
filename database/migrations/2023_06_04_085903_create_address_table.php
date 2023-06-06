@@ -15,14 +15,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('address', function (Blueprint $table) {
-            $table->id('id_address');
+            $table->id();
             $table->string('province');
             $table->string('district')->nullable();
             $table->string('ward')->nullable();//phuong
             $table->string('specific_address')->nullable();//dia chi cu the
             $table->string('address_type')->nullable();//nha rieng hoac cong ty
             $table->foreignId('id_users');
-            $table->foreign('id_users')->references('id_users')->on('users');
+            $table->foreign('id_users')->references('id')->on('users');
         });
     }
 

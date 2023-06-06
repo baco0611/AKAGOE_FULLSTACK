@@ -54,4 +54,10 @@ Route::get('download/{id_name}', [DownloadController::class,'show'])->name('down
 Route::get('home/{id_language}', [HomeController::class,'show'])->name('home.show');
 
 #bestSeller
-Route::get('bestSeller', [ProductController::class,'index'])->name('products.index');
+Route::get('best-seller', [ProductController::class,'index'])->name('products.index');
+
+#product_other
+Route::get('item/{id}', [ProductController::class,'show'])->name('products.index');
+
+#product_popular
+Route::post('find', [ProductController::class,'store'])->name('product.store');
